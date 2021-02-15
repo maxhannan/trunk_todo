@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Chivo:300,700|Playfair+Display+SC:700i&display=swap');
+
 body{
+    font-family: 'Chivo';
     margin:0;
     background-color: #252525;
 }
@@ -108,8 +111,9 @@ body{
 }
 .todos{
     /* Layout Color */
-    background-color: blue;
-
+    /* background-color: blue; */
+    color: white;
+    text-align: center;
     height: 92vh;
     transition: .8s all;
 }
@@ -134,12 +138,12 @@ body{
 .formContainer{
     height:0;
     display: flex;
-    /* background-color: #1d1d1d; */
+    background-color: #1d1d1d;
 
     /* Layout Color */
     /* background-color:aquamarine; */
 
-    transition: .8s all cubic-bezier(0.075, 0.82, 0.165, 1) ;
+    transition: .8s all;
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
 }
@@ -155,6 +159,7 @@ body{
 
 .submitBtnBox{
     width: 15%;
+
      /* Layout Color */
     /* background-color: gold; */
     display: flex;
@@ -207,10 +212,13 @@ body{
 
 
 @media only screen and (max-width: 1000px) {
-    .sideBar{
+    .sideBar.close{
         width: 100vw
     }
     .main{
+        width: 97vw;
+    }
+    .main.fullScreen{
         width: 0vw;
     }
 }
