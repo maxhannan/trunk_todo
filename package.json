@@ -1,0 +1,34 @@
+{
+  "name": "trunk_todo",
+  "version": "1.0.0",
+  "description": "A Todo app built with Vanilla Javascript.",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "webpack --watch",
+    "start": "webpack serve --open",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maxhannan/trunk_todo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maxhannan/trunk_todo/issues"
+  },
+  "homepage": "https://github.com/maxhannan/trunk_todo#readme",
+  "devDependencies": {
+    "file-loader": "^6.2.0",
+    "webpack": "^5.21.2",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.2",
+    "@googlemaps/js-api-loader": "^1.11.1",
+    "lodash": "^4.17.20"
+  }
+}
