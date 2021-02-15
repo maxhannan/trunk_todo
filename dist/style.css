@@ -236,7 +236,7 @@ body{
     }
 
     .sideBar{
-        height:80%;
+        height:70%;
         padding-top: 10%;
     }
     .main{
@@ -245,15 +245,15 @@ body{
     
     }
     .body{
-        height: 80%;
+        height: 70%;
     }
     .todos{
-        height: 80%;
+        height: 70%;
 
 
     }
     #content{
-        height: 80%;
+        height: 70%;
     }
     .main.fullScreen{
         width: 0vw;
