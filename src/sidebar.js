@@ -82,7 +82,7 @@ const sideBarModule = ()=>{
     content.insertBefore(bar,main);
 
     const container = document.querySelector('.container')
-    container.classList.toggle("change");
+    
     
     const toggleSide = () =>{
         const sideBar = document.querySelector('.sideBar')
