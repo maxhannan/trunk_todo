@@ -238,17 +238,21 @@ body{
     .sideBar{
         height:70%;
         padding-top: 10%;
+        overflow: hidden;
     }
     .main{
         width: 97%;
         height: 800px;
+        overflow: hidden;
     
     }
     .body{
         height: 70%;
+        overflow: hidden;
     }
     .todos{
-        height: 70%;
+        height: 75%;
+
 
 
     }
@@ -265,8 +269,14 @@ body{
         justify-content: space-around;
         
     }
+    .formHolder{
+        position: absolute;
+        bottom: 0;
+        width: 360px;
+       
+    }
     .formHolder.formOpen{
-        height: 28%;
+        height: 50%;
     }
 }
 @media only screen and (min-width: 1500px) {
