@@ -4,6 +4,8 @@ body{
     font-family: 'Chivo';
     margin:0;
     background-color: #252525;
+    width: 100vw;
+    overflow: hidden;
 }
 #content{
     display: flex;
@@ -222,7 +224,21 @@ body{
         width: 0vw;
     }
 }
+@media only screen and (min-width: 1500px) {
 
+    .menuIconContainer{
+       width: 25vw;
+        min-width: 70px;
+    }
+    .navIcon{
+        color:white;
+        opacity: .3;
+        font-size: 3vh;
+        
+        cursor: pointer;
+        transition:.5s all ;
+    }
+}
 
 .container {
     margin-right:20px ;
