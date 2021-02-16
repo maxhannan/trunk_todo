@@ -1,311 +1,91 @@
 @import url('https://fonts.googleapis.com/css?family=Chivo:300,700|Playfair+Display+SC:700i&display=swap');
 
 body{
-    font-family: 'Chivo';
-    margin:0;
-    background-color: #252525;
-    width: 100vw;
-    width: 100%;
-    min-width: -webkit-fill-available;
-    height: 100vh;
-    min-height: -webkit-fill-available;
-    height: 100%;
+    margin: 0;
     overflow: hidden;
+    font-family: 'Chivo';
 }
 #content{
+    background-color: blue;
+    height: 100vh;
+    width: 100vw;
     display: flex;
-    
+    align-items: stretch;
 }
-
 .sideBar{
-    width: 3vw;
-    min-width: 70px;
-    overflow: none;
-
-    z-index: 3;
-    height: 100vh;
-    min-height: -webkit-fill-available;
-    background-color: #1d1d1d;
-    transition: 1s all cubic-bezier(0.075, 0.82, 0.165, 1);
-    display:flex;
+    
+    background-color: aqua;
+    display: flex;
     flex-direction: column;
+    align-items: flex-end;
+    transition: 1s all;
+    width: 35%;
+    overflow: scroll;
+    padding-top: 30px;
 }
-.sideBar.close{
-    width: 25vw;
+.sideBarOption{
+    height: 50px;
+    min-height: 50px;
+    min-width: 100%;
+    display: flex;
+    margin-top: 15px; 
 }
-
-.closeHolder{
-    /* Layout Color */
-    /* background-color: purple; */
-
-    width: 100%;
-    height: 8vh;
-    height: 8%;
+.sideBarTitle{
+    /* background-color: lightslategray; */
+    width:100%;
+    min-width: 0%;
+    font-size: 3vh;
+    padding-right: 15px;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-end;
 }
-.mainMenu{
-    height:42vh;
-    height: 42%;
-    /* Layout Color */
+.sideBarIcon{
     /* background-color: lightcoral; */
-    display: flex;
-}
-
-.menuTextContainer{
-    width: 100%;
-    
-     /* Layout Color */
-    /* background-color: rosybrown; */
-}
-.menuIconContainer{
-    width: 6vw;
-    min-width: 70px;
-    transition: .5s all ease;
-     /* Layout Color */
-    /* background-color: darkorange; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-}
-.navIcon{
-    color:white;
-    opacity: .3;
-    font-size: 4vh;
-    
-    cursor: pointer;
-    transition:.5s all ;
-}
-.navIcon:hover{
-    opacity: 1;
-}
-
-.projects{
-    height:42vh;
-    /* Layout Color */
-    /* background-color: lightseagreen; */
-    display: flex;
-    overflow-x: scroll;
-}
-.sideFooter{
-    height: 8vh;
-    /* Layout Color */
-    /* background-color: lightslategrey; */
-}
-.closer{
-    color:white;
-    opacity: .3;
-    margin-right: 15px;
-    cursor: pointer;
-    transition:1.5s all ;
-}
-.closer:hover{
-    opacity: 1;
-}
-.closer.closed{
-    transform: rotate(-225deg);
-}
-.main{
-    z-index: 1;
-    width: 97vw;
-
-    height: 100vh;
-    min-height: -webkit-fill-available;
-    background-color: #252525;
-    transition: .8s all cubic-bezier(0.075, 0.82, 0.165, 1);
-    display: flex;
-    flex-direction: column;
-}
-.main.fullScreen{
-    width: 75vw;
-}
-.todos{
-    /* Layout Color */
-    /* background-color: blue; */
-    color: white;
-    text-align: center;
-    height: 92vh;
-    transition: .8s all;
-}
-.todos.formOpen{
-    height: 65vh;
-    height: 65%;
-}
-.formHolder{
-    height: 8vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    transition: .8s all ;
-    overflow: hidden;
-
-    /* Layout Color */
-
-
-}
-.formHolder.formOpen{
-    height: 35vh;
-}
-.formContainer{
-    height:0;
-    display: flex;
-    background-color: #1d1d1d;
-
-    /* Layout Color */
-    /* background-color:aquamarine; */
-
-    transition: .8s all;
-    border-top-right-radius: 20px;
-    border-top-left-radius: 20px;
-}
-.formContainer.formOpen{
-    height: 27vh;
-}
-
-.inputBox{
-    width: 85%;
-     /* Layout Color */
-    /* background-color: bisque; */
-}
-
-.submitBtnBox{
-    width: 15%;
-
-     /* Layout Color */
-    /* background-color: gold; */
+    width: 50px;
+    height: 100%;
+    min-width: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 4vh;
 }
-
-.formBtn{
-    color:white;
-    font-size:10vh;
+.main{
+    width:100%;
+    background-color: blueviolet;
 }
-.formBtn:hover{
-    color:gray;
-    font-size:10vh;
-}
-.formBtn:active{
-    color:white;
-    font-size:10vh;
-}
-.btmBtnHolder{
-    height: 8vh;
-
-    background-color: #252525;
-    /* Layout Color */
-    /* background-color:aquamarine; */
-
-    transition: .8s all;
+.formBar{
+    width:50%;
+    background-color: gold;
     display: flex;
-    align-items: center;
-    justify-content: flex-end;
+    flex-direction: column;
+    transition: 1s all;
+    align-items: flex-start;
+    overflow: hidden;
+    min-width: 5%;
 }
-.btmBtnHolder.formOpen{
-    background-color: #1d1d1d;
+.closed{
+    width: 60px;
+    min-width: 60px;
 }
-
-.formOpener{
-    color:white;
-    opacity: .3;
-    margin-right: 30px;
-    cursor: pointer;
-    transition:1.5s all ;
-    
-}
-.formOpener:hover{
-    opacity: 1;
-}
-.formOpener.open{
-    transform: rotate(-225deg);
+.open{
+    width: 100%;
 }
 
-
-@media only screen and (max-width: 1000px) {
-    .sideBar.close{
-        width: 100vw;
-        width:100%;
-
-        min-width: -webkit-fill-available;
-    }
-    .formBtn{
-        font-size: 5vh;
-    }
-
-    .sideBar{
-        height:70%;
-        padding-top: 10%;
-        overflow: hidden;
-    }
-    .main{
-        width: 97%;
-        height: 800px;
-        overflow: hidden;
-    
-    }
-    .body{
-        height: 70%;
-        overflow: hidden;
-    }
-    .todos{
-        height: 75%;
-
-
-
-    }
-    #content{
-        height: 70%;
-    }
-    .main.fullScreen{
-        width: 0vw;
-        width: 0px;
-        display: none;
-    }
-    .menuIconContainer{
-        height: 300px;
-        justify-content: space-around;
-        
-    }
-    .formHolder{
-        position: absolute;
-        bottom: 0;
-        width: 360px;
-       
-    }
-    .formHolder.formOpen{
-        height: 50%;
-    }
-}
-@media only screen and (min-width: 1500px) {
-
-    .menuIconContainer{
-       width: 25vw;
-        min-width: 70px;
-    }
-    .navIcon{
-        color:white;
-        opacity: .3;
-        font-size: 3vh;
-        
-        cursor: pointer;
-        transition:.5s all ;
-    }
-}
 
 .container {
-    margin-right:20px ;
+    margin-right:10px ;
     cursor: pointer;
-    opacity: .3;
+    opacity: 1;
     transition: .5s all ease;
+    width: 30px
   }
   
   .bar1, .bar2, .bar3 {
     width: 30px;
     height: 3px;
-    background-color: white;
+    background-color: black;
    
     margin: 6px 0;
     transition: .8s ease-in-out;
@@ -323,4 +103,24 @@ body{
   .change .bar3 {
     -webkit-transform: rotate(45deg) translate(-8px, -8px);
     transform: rotate(45deg) translate(-6px, -7px);
+  }
+
+  @media only screen and (max-width: 1000px) {
+    .sideBar {
+      width: 100vw;
+    }
+    .formBar{
+        width: 100%;
+    }
+    .main{
+        width: 0%;
+        transition: 1s all;
+    }
+    .open{
+        width: 100%;
+    }
+    .closed{
+        width: 60px;
+        min-width: 60px;
+    }
   }
