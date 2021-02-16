@@ -54,6 +54,7 @@ body{
 .main{
     width:100%;
     background-color: blueviolet;
+    text-align: center;
 }
 .formBar{
     width:50%;
@@ -66,8 +67,8 @@ body{
     min-width: 5%;
 }
 .closed{
-    width: 60px;
-    min-width: 60px;
+    width: 50px;
+    min-width: 50px;
 }
 .open{
     width: 100%;
@@ -120,7 +121,10 @@ body{
         width: 100%;
     }
     .closed{
-        width: 60px;
-        min-width: 60px;
+        width: 45px;
+        min-width: 45px;
+    }
+    .sideBarIcon{
+        font-size: 3vh;
     }
   }
