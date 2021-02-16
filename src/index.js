@@ -1,50 +1,11 @@
 import '../node_modules/@fortawesome/fontawesome-free/js/all';
-// import { formModule } from './formModule';
-// import { mainContainerModule } from './mainContainer';
-// import { sideBarModule } from './sidebar';
+import * as dropdown from './dropdown';
 
-// const pageload = (()=>{
-//     // mainContainerModule();
-//     // sideBarModule();
-//     // formModule();
-// })();
+const opener = document.querySelector('#opener');
+const form = document.querySelector('#formy');
 
-const sidebar = document.querySelector('.sideBar')
-const sideClose = document.querySelector('.container')
-const formBar = document.querySelector('.formBar')
-const formClose = document.querySelector('.formClose')
-const main = document.querySelector('.main')
-let sideOpen = true;
-let formOpen = false;
-const toggleBars = (e)=>{
-    let target = e.target.id
-  
-   
-    if(target === 'sideBtn' ){
-        if(!formOpen){
-            main.classList.toggle('open')
-        }
-        if(formOpen){
-            formOpen = !formOpen
-        }
-        sideOpen = !sideOpen
-        sidebar.classList.toggle('closed');
-        sideClose.classList.toggle("change");
-        formBar.classList.add('closed');
-    }else{
-        if(!sideOpen){
-            main.classList.toggle('open')
-        }
-        if(sideOpen){
-            sideOpen = !sideOpen
-        }
-        
-        
-        formOpen = !formOpen
-        formBar.classList.toggle('closed');
-        sidebar.classList.add('closed')
-    }
 
+const formTog = () =>{
+    form.classList.toggle('closed')
 }
-sideClose.addEventListener('click', toggleBars)
-formClose.addEventListener('click', toggleBars)
+opener.addEventListener('click', formTog)
