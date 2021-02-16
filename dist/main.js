@@ -19,6 +19,16 @@ eval("/*!\n * Font Awesome Free 5.15.2 by @fontawesome - https://fontawesome.com
 
 /***/ }),
 
+/***/ "./src/dropdown.js":
+/*!*************************!*\
+  !*** ./src/dropdown.js ***!
+  \*************************/
+/***/ (() => {
+
+eval("document.querySelector('.custom-select-wrapper').addEventListener('click', function() {\n    this.querySelector('.custom-select').classList.toggle('open');\n})\nfor (const option of document.querySelectorAll(\".custom-option\")) {\n    option.addEventListener('click', function() {\n        if (!this.classList.contains('selected')) {\n            this.parentNode.querySelector('.custom-option.selected').classList.remove('selected');\n            this.classList.add('selected');\n            this.closest('.custom-select').querySelector('.custom-select__trigger span').textContent = this.textContent;\n        }\n    })\n}\n\nwindow.addEventListener('click', function(e) {\n    const select = document.querySelector('.custom-select')\n    if (!select.contains(e.target)) {\n        select.classList.remove('open');\n    }\n});\n\n//# sourceURL=webpack://trunk_todo/./src/dropdown.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -26,7 +36,7 @@ eval("/*!\n * Font Awesome Free 5.15.2 by @fontawesome - https://fontawesome.com
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _node_modules_fortawesome_fontawesome_free_js_all__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/@fortawesome/fontawesome-free/js/all */ \"./node_modules/@fortawesome/fontawesome-free/js/all.js\");\n/* harmony import */ var _node_modules_fortawesome_fontawesome_free_js_all__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_fortawesome_fontawesome_free_js_all__WEBPACK_IMPORTED_MODULE_0__);\n\n// import { formModule } from './formModule';\n// import { mainContainerModule } from './mainContainer';\n// import { sideBarModule } from './sidebar';\n\n// const pageload = (()=>{\n//     // mainContainerModule();\n//     // sideBarModule();\n//     // formModule();\n// })();\n\nconst sidebar = document.querySelector('.sideBar')\nconst sideClose = document.querySelector('.container')\nconst formBar = document.querySelector('.formBar')\nconst formClose = document.querySelector('.formClose')\nconst main = document.querySelector('.main')\nlet sideOpen = true;\nlet formOpen = false;\nconst toggleBars = (e)=>{\n    let target = e.target.id\n  \n   \n    if(target === 'sideBtn' ){\n        if(!formOpen){\n            main.classList.toggle('open')\n        }\n        if(formOpen){\n            formOpen = !formOpen\n        }\n        sideOpen = !sideOpen\n        sidebar.classList.toggle('closed');\n        sideClose.classList.toggle(\"change\");\n        formBar.classList.add('closed');\n    }else{\n        if(!sideOpen){\n            main.classList.toggle('open')\n        }\n        if(sideOpen){\n            sideOpen = !sideOpen\n        }\n        \n        \n        formOpen = !formOpen\n        formBar.classList.toggle('closed');\n        sidebar.classList.add('closed')\n    }\n\n}\nsideClose.addEventListener('click', toggleBars)\nformClose.addEventListener('click', toggleBars)\n\n//# sourceURL=webpack://trunk_todo/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _node_modules_fortawesome_fontawesome_free_js_all__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/@fortawesome/fontawesome-free/js/all */ \"./node_modules/@fortawesome/fontawesome-free/js/all.js\");\n/* harmony import */ var _node_modules_fortawesome_fontawesome_free_js_all__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_fortawesome_fontawesome_free_js_all__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _dropdown__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dropdown */ \"./src/dropdown.js\");\n/* harmony import */ var _dropdown__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_dropdown__WEBPACK_IMPORTED_MODULE_1__);\n\n\n\nconst opener = document.querySelector('#opener');\nconst form = document.querySelector('#formy');\n\n\nconst formTog = () =>{\n    form.classList.toggle('closed')\n}\nopener.addEventListener('click', formTog)\n\n//# sourceURL=webpack://trunk_todo/./src/index.js?");
 
 /***/ })
 
