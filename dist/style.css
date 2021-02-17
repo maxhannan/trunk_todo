@@ -5,10 +5,6 @@ body{
     font-family:'chivo' ;
     margin: 0;
 }
-#opener{
-    position: fixed;
-    top: 0;
-}
 #content{
     display: flex;
     align-items: center;
@@ -16,8 +12,16 @@ body{
     height: 100vh;
     width: 100vw;
     background-color: #1b1b1b;
-
 }
+
+
+
+
+
+
+
+
+/* FORM CSS */
 .formy{
     width: 60vh;
     height: 50vh;
@@ -29,12 +33,15 @@ body{
       'task task task task task task closer '.8fr
       'descrip descrip descrip descrip descrip descrip descrip '3fr
       'section section section priority priority btn  btn  '.8fr;
-
 }
 .formy.closed{
     opacity: 0;
     height: 0vh;
     overflow: hidden;
+}
+#opener{
+    position: fixed;
+    top: 0;
 }
 .closer{
     grid-area: closer;
@@ -233,15 +240,6 @@ table {
     left: 5px;
     transform: rotate(45deg);
 }
-
-
-
-
-
-
-
-
-
 
 
 
