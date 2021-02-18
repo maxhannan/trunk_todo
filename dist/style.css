@@ -22,8 +22,8 @@ body{
     transition: .3s all ease-in-out ;
     overflow-x: hidden;
     overflow-y: scroll;
-   
 }
+
 .sidebar.openBar{
     width: 20%;
     opacity: 1;
@@ -188,7 +188,6 @@ ul{
     list-style-type:none;
     margin: 0px;
     padding: 0px;
-
     width: 60%;
 }
 li:focus{
@@ -209,9 +208,7 @@ li{
 .open{
     height:200px;
     background-color: #1b1b1b;
-    
 }
-
 
 .taskHolder{
     display:flex;
@@ -283,15 +280,15 @@ li{
     font-family:'Poppins' sans-serif ;
     color: white;
     opacity: .5;
-    transition: .5s all;
+    transition: .2s color;
     
 }
 .dueDate{
     width: 15%;
     height: 100%;
-    /* background-color: lightskyblue; */
     display: flex;
 }
+
 .date{
     width:100%;
     opacity: .5;
@@ -307,41 +304,24 @@ li{
 .opt{
     width: 10%;
     height: 100%;
+    opacity: .7;
     font-size: 2.5vh;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.edit{
-   opacity: .7;
-}
-.edit:hover{
+
+.opt:hover{
     opacity: 1;
 }
-.yellow{
-    opacity: 1;
-    color:gold;
-}
-.delBtn{
-    opacity: .5;
-    color: lightcoral;
-}
+.yellow{color:gold;}
+.delBtn{color: lightcoral;}
+.flag{color: yellow;}
+.grabLines{cursor: grab;}
+
 .openArrow{
     padding-bottom: 1%;
-    opacity: .5;
     font-size: 4vh;
-    /* transition: .2s transform; */
-}
-.flag{
-    opacity: .7;
-    color: yellow;
-}
-.grabLines{
-    opacity: .7;
-    transition: .5s all;
-    cursor: grab;
-    display: flex;
-    justify-content: center;
 }
 .openArrow.openBtnOpen{
     transform:rotate(180deg)
@@ -349,6 +329,8 @@ li{
 .openArrow:hover,.delBtn:hover,.flag:hover,.grabLines:hover{
     opacity: 1;
 }
+
+
 
 @media only screen and (max-width: 1000px) {
 
@@ -382,7 +364,7 @@ li{
     }
     ul{
         width: 88%;
-        margin-right:5%;
+        margin-right:6%;
     }
     .openArrow{
         font-size: 4vh;
