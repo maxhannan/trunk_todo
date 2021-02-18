@@ -16,8 +16,12 @@ const viewController = (()=>{
   const bindsort = ()=>{
     const sortable = new Sortable(document.querySelectorAll('ul'), {
       draggable: 'li',
+      //hides mirror
+      mirror: {
+        appendTo: '.hidden'
+      },
       swapAnimation: {
-        duration: 200,
+        duration: 300,
         easingFunction: 'ease-in-out',
         horizontal: false
       },
