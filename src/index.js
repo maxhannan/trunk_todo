@@ -1,6 +1,8 @@
 import '../node_modules/@fortawesome/fontawesome-free/js/all';
 import { Sortable, Plugins } from '@shopify/draggable';
-
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 const sortable = new Sortable(document.querySelectorAll('ul'), {
   draggable: 'li',
   swapAnimation: {
@@ -36,9 +38,15 @@ const handleCheck = function(e){
   let task = hol.querySelector('.taskText')
   task.classList.toggle('completed')
 }
-const handleMenuOpen = ()=>{
+const handleMenuOpen = async()=>{
   menuOpen.classList.toggle("change")
   sideBar.classList.toggle('open')
+  adder.classList.remove('add')
+  
+  main.classList.toggle('open')
+  taskContainer.classList.toggle('hidden')
+  taskHeader.classList.toggle('hidden')
+  
 }
 const bindEvents = ()=>{
   const openBtns = document.querySelectorAll('.openArrow')
@@ -55,8 +63,17 @@ const bindEvents = ()=>{
   openBtns.forEach(btn => btn.addEventListener('mousedown', handleOpenTask))
   
 }
+const taskHeader = document.querySelector('.taskHeader')
+const taskContainer = document.querySelector('.taskContainer')
 const sideBar = document.querySelector('.sidebar')
 const menuOpen = document.querySelector('.menuOpen')
+const adder = document.querySelector('.adder')
+const main = document.querySelector('.main')
 bindEvents();
 sortable.on('drag:stop',bindEvents);
+adder.addEventListener('click', ()=>{
+  adder.classList.toggle('add')
+  menuOpen.classList.remove("change")
+  sideBar.classList.remove('open')
+})
 menuOpen.addEventListener('click', handleMenuOpen);
