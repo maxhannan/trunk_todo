@@ -1,6 +1,20 @@
 import '../node_modules/@fortawesome/fontawesome-free/js/all';
+import { Sortable, Plugins } from '@shopify/draggable';
 
-function handleOpenTask(e){
+const sortable = new Sortable(document.querySelectorAll('ul'), {
+  draggable: 'li',
+  swapAnimation: {
+    duration: 200,
+    easingFunction: 'ease-in-out',
+    horizontal: false
+  },
+  mirror: {
+    appendTo: '.hidden'
+  },
+  
+  plugins: [Plugins.SwapAnimation]
+});
+const handleOpenTask = (e)=>{
  let target = e.target.closest('li');
  let listItems = document.querySelectorAll('li');
  listItems.forEach(li => {
@@ -9,25 +23,40 @@ function handleOpenTask(e){
      li.querySelector('.openArrow').classList.remove('openBtnOpen') 
    }
   })
- console.log(target)
  e.target.closest('div').classList.toggle('openBtnOpen')
-
  target.classList.toggle('open')
 }
-function handleChange(e){
+const handleChange = (e) =>{
   console.log(e.target.value)
 }
-function  handleCheck(e){
+const handleCheck = function(e){
   e.target.classList.toggle('checked')
+  console.log(e.target)
   let hol = e.target.closest('.taskHolder')
-  
   let task = hol.querySelector('.taskText')
   task.classList.toggle('completed')
 }
-const openBtns = document.querySelectorAll('.openArrow')
-const inputs = document.querySelectorAll('input')
-const checkers = document.querySelectorAll('.checker')
-console.log(inputs)
-checkers.forEach(check => check.addEventListener('click', handleCheck))
-inputs.forEach(inp => inp.addEventListener('change', handleChange))
-openBtns.forEach(btn => btn.addEventListener('click', handleOpenTask))
+const handleMenuOpen = ()=>{
+  menuOpen.classList.toggle("change")
+  sideBar.classList.toggle('open')
+}
+const bindEvents = ()=>{
+  const openBtns = document.querySelectorAll('.openArrow')
+  const inputs = document.querySelectorAll('input')
+  const checkers = document.querySelectorAll('.checker')
+  
+  // console.log(checkers)
+  checkers.forEach(check => check.removeEventListener('mousedown', handleCheck))
+  inputs.forEach(inp => inp.removeEventListener('change', handleChange))
+  openBtns.forEach(btn => btn.removeEventListener('mousedown', handleOpenTask))
+
+  checkers.forEach(check => check.addEventListener('mousedown', handleCheck))
+  inputs.forEach(inp => inp.addEventListener('change', handleChange))
+  openBtns.forEach(btn => btn.addEventListener('mousedown', handleOpenTask))
+  
+}
+const sideBar = document.querySelector('.sidebar')
+const menuOpen = document.querySelector('.menuOpen')
+bindEvents();
+sortable.on('drag:stop',bindEvents);
+menuOpen.addEventListener('click', handleMenuOpen);

@@ -18,27 +18,97 @@ body{
     width: 100vw;
     height: 100vh;
     /* background-color: blue; */
-   
 
 }
 .sidebar{
-    width: 30%;
+    width: 0%;
     height: 100vh; 
     background-color: lightcoral;
+    transition: .3s all;
 }
-.taskList{
+.sidebar.open{
+    width: 30%;
+    height: 100vh; 
+}
+.main{
     width: 100%;
     height: 100vh;
     /* background-color: lightgreen; */
     display: flex;
+    flex-direction: column;
     align-items: flex-start;
-    overflow: scroll;
+    overflow: hidden;
     justify-content: center;
+}
+.header{
+    height: 8%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    /* background-color: lightpink; */
+}
+.adder{
+    font-size:4vh;
+    margin-right: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.menuOpen{
+
+    margin-left: 2%;
+    margin-top: 15px;
+
+    margin-right:10px ;
+    cursor: pointer;
+    opacity: 1;
+    transition: .5s all ease;
+    width: 30px;
+
+}
+.bar1, .bar2, .bar3 {
+    width: 30px;
+    height: 3px;
+    background-color: white;
+   
+    margin: 6px 0;
+    transition: .8s ease-in-out;
+  }
+  .container:hover{
+    opacity: .8;
+  }
+  .change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+    transform: rotate(-45deg) translate(-6px, 6px);
+  }
+  
+  .change .bar2 {opacity: 0;}
+  
+  .change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px);
+    transform: rotate(45deg) translate(-6px, -7px);
+  }
+.taskContainer{
+    width: 100%;
+    height: 92%;
+    /* background-color: lightskyblue; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: scroll;
+    justify-content: flex-start;
+}
+.taskHeader{
+    margin-bottom: 0px;
+    padding: 0px;
+    width: 80%;
+    text-align:left ;
+    border-bottom: 2px solid gray;
 }
 
 ul{
     list-style-type:none;
-    margin-left: 0px;
+    margin: 0px;
     padding: 0px;
     transition: 1s all;
     width: 80%;
@@ -48,13 +118,16 @@ li:focus{
 }
 
 li{
-    border: 1px solid white;
-    /* border-radius: 5px; */
+    border: 1px solid gray;
+    border-radius: 5px;
     margin:2%;
     height: 50px;
     justify-content: center;
     overflow: hidden;
-    transition: .8s all;
+    transition: .3s all;
+}
+li:hover{
+    border: 1px solid white; 
 }
 
 .open{
@@ -107,7 +180,7 @@ li{
     border: 1px solid lightgreen;
 }
 .task{
-    width:62%;
+    width:60%;
     /* background-color: lightgreen; */
     
     height: 100%;
@@ -146,7 +219,7 @@ li{
     color: gray;
 }
 .delBtn{
-    width: 6%;
+    width: 5%;
     height: 100%;
     font-size: 2.5vh;
     display: flex;
@@ -154,34 +227,47 @@ li{
     color: lightcoral;
     align-items: center;
     justify-content: center;
-    transition: .5s all;
+
     /* background-color: lightskyblue; */
 }
 .openArrow{
  
     padding-bottom: 1%;
-    width: 6%;
+    width: 5%;
     height: 100%;
     opacity: .5;
     font-size: 3vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: .5s all;
+
+
     /* background-color: lightcoral; */
 }
 .flag{
     opacity: .7;
-    width: 6%;
+    width: 5%;
     font-size: 2.5vh;
     display: flex;
     align-items: center;
     justify-content: center;
     color: yellow;
 }
+.grabLines{
+    opacity: .7;
+    width: 5%;
+    font-size: 2.5vh;
+    transition: .5s all;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: grab;
+
+}
 .openArrow.openBtnOpen{
     transform:rotate(180deg)
+    
 }
-.openArrow:hover,.delBtn:hover,.flag:hover{
+.openArrow:hover,.delBtn:hover,.flag:hover,.grabLines:hover{
     opacity: 1;
 }
