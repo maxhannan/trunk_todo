@@ -10,9 +10,9 @@ const sortable = new Sortable(document.querySelectorAll('ul'), {
     easingFunction: 'ease-in-out',
     horizontal: false
   },
-  mirror: {
-    appendTo: '.hidden'
-  },
+  // mirror: {
+  //   appendTo: '.hidden'
+  // },
   
   plugins: [Plugins.SwapAnimation]
 });
@@ -70,10 +70,15 @@ const menuOpen = document.querySelector('.menuOpen')
 const adder = document.querySelector('.adder')
 const main = document.querySelector('.main')
 bindEvents();
-sortable.on('drag:stop',bindEvents);
+
 adder.addEventListener('click', ()=>{
   adder.classList.toggle('add')
   menuOpen.classList.remove("change")
   sideBar.classList.remove('open')
+  main.classList.remove('open')
+  taskContainer.classList.remove('hidden')
+  taskHeader.classList.remove('hidden')
 })
 menuOpen.addEventListener('click', handleMenuOpen);
+sortable.on('drag:start',(e) => e.data.source.style.border = '3px solid lightcoral');
+sortable.on('drag:stop',bindEvents);
