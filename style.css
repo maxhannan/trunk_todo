@@ -21,6 +21,7 @@ body{
     height: 100vh; 
     background-color: lightcoral;
     transition: 1s all ease;
+
 }
 .sidebar.open{
     width: 30%;
@@ -157,12 +158,13 @@ li:focus{
 
 li{
     border: 1px solid gray;
+    background-color: #1b1b1b;
     border-radius: 5px;
     margin:2%;
     height: 50px;
     justify-content: center;
     overflow: hidden;
-    transition: .3s all;
+    transition: .3s height;
 }
 li:hover{
     border: 1px solid white; 
@@ -178,7 +180,7 @@ li:hover{
     height: 50px;
     width: 100%;
     transition: .5s all ease;
-    background-color: #1b1b1b;
+    
     align-items: center;
     
 }
@@ -332,6 +334,8 @@ li:hover{
     }
     .taskHeader{
         text-align:center ;
+        justify-content: center;
+        border: none;
     }
     .taskHeader.hidden{
         opacity:0;
@@ -343,6 +347,6 @@ li:hover{
 
     }
     ul{
-        width: 95%;
+        width: 87%;
     }
   }
