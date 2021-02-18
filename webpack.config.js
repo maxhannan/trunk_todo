@@ -1,5 +1,6 @@
 const path = require('path');
 
+
 module.exports = {
     mode: 'development',
     entry: './src/index.js',
@@ -10,8 +11,11 @@ module.exports = {
         filename: 'main.js',
         path: path.resolve(__dirname, 'dist'),
     },
+
+    
 };
 module: {
+
     loaders: [
         {
             test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
@@ -27,3 +31,4 @@ module: {
           }
         ]
       }
+ 

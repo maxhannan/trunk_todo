@@ -127,9 +127,7 @@ const viewController = (()=>{
     edit.forEach(editBtn => editBtn.addEventListener('mousedown', handleChange));
     openBtns.forEach(btn => btn.addEventListener('mousedown', handleOpenTask))
   }
-  //Inital Bind
-  bindEvents();
-  bindsort();
+ 
   // Event listeners for static elements. 
   adder.addEventListener('click', handleAdd)
   menuOpen.addEventListener('click', handleMenuOpen);

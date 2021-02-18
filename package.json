@@ -29,6 +29,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.2",
     "@shopify/draggable": "^1.0.0-beta.8",
+    "date-fns": "^2.17.0",
     "lodash": "^4.17.20"
   }
 }
