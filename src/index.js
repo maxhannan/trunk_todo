@@ -30,6 +30,7 @@ const handleOpenTask = (e)=>{
 }
 const handleChange = (e) =>{
   console.log(e.target.value)
+  e.target.disabled = true;
 }
 const handleCheck = function(e){
   e.target.classList.toggle('checked')
@@ -40,10 +41,10 @@ const handleCheck = function(e){
 }
 const handleMenuOpen = async()=>{
   menuOpen.classList.toggle("change")
-  sideBar.classList.toggle('open')
+  sideBar.classList.toggle('openBar')
   adder.classList.remove('add')
   
-  main.classList.toggle('open')
+  main.classList.toggle('openSideBar')
   taskContainer.classList.toggle('hidden')
   taskHeader.classList.toggle('hidden')
   
@@ -52,6 +53,7 @@ const bindEvents = ()=>{
   const openBtns = document.querySelectorAll('.openArrow')
   const inputs = document.querySelectorAll('input')
   const checkers = document.querySelectorAll('.checker')
+  const taskBox = document.querySelectorAll('.task')
   
   // console.log(checkers)
   checkers.forEach(check => check.removeEventListener('mousedown', handleCheck))
@@ -60,6 +62,7 @@ const bindEvents = ()=>{
 
   checkers.forEach(check => check.addEventListener('mousedown', handleCheck))
   inputs.forEach(inp => inp.addEventListener('change', handleChange))
+  taskBox.forEach(tb => tb.addEventListener('dblclick', (e)=>{e.target.disabled = false;}))
   openBtns.forEach(btn => btn.addEventListener('mousedown', handleOpenTask))
   
 }
@@ -74,11 +77,11 @@ bindEvents();
 adder.addEventListener('click', ()=>{
   adder.classList.toggle('add')
   menuOpen.classList.remove("change")
-  sideBar.classList.remove('open')
-  main.classList.remove('open')
+  sideBar.classList.remove('openBar')
+  main.classList.remove('openSideBar')
   taskContainer.classList.remove('hidden')
   taskHeader.classList.remove('hidden')
 })
 menuOpen.addEventListener('click', handleMenuOpen);
-sortable.on('drag:start',(e) => e.data.source.style.border = '3px solid lightcoral');
+sortable.on('drag:start',(e) => e.data.source.style.border = '3px solid lightskyblue');
 sortable.on('drag:stop',bindEvents);
