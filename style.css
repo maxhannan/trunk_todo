@@ -67,26 +67,21 @@ body{
 .adder.add{
     transform: rotate(135deg);
 }
+/* Code for Hamburger Button */
 .menuOpen{
-
     margin-left: 2%;
     margin-top: 22px;
-
     margin-right:10px ;
     cursor: pointer;
     opacity: 1;
     width: 30px;
-    
 }
 .bar1, .bar2, .bar3 {
     width: 30px;
     height: 3px;
     background-color: white;
-    
     transition: .5s all ease;
     margin: 6px 0;
-
-
   }
   .container:hover{
     opacity: .8;
@@ -261,51 +256,33 @@ li:hover{
     font-family:'Poppins' sans-serif ;
     color: gray;
 }
-.delBtn{
+.opt{
     width: 7%;
     height: 100%;
     font-size: 2.5vh;
     display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.delBtn{
+
     opacity: .5;
     color: lightcoral;
-    align-items: center;
-    justify-content: center;
-
-    /* background-color: lightskyblue; */
 }
 .openArrow{
- 
     padding-bottom: 1%;
-    width: 7%;
-    height: 100%;
     opacity: .5;
     font-size: 3vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-
-    /* background-color: lightcoral; */
 }
 .flag{
     opacity: .7;
-    width: 7%;
-    font-size: 2.5vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
     color: yellow;
 }
 .grabLines{
     opacity: .7;
-    width: 7%;
-    font-size: 2.5vh;
     transition: .5s all;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     cursor: grab;
-
 }
 .openArrow.openBtnOpen{
     transform:rotate(180deg)
@@ -338,6 +315,7 @@ li:hover{
     .taskHeader{
         text-align:center ;
         justify-content: center;
+        border: none;
   
     }
     .taskHeader.hidden{
@@ -350,7 +328,7 @@ li:hover{
 
     }
     ul{
-        width: 90%;
+        width: 88%;
         margin-right:3%;
     }
   }
