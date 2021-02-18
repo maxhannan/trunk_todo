@@ -11,14 +11,14 @@ const viewController = (()=>{
   }
   const sortable = new Sortable(document.querySelectorAll('ul'), {
     draggable: 'li',
-    swapAnimation: {
-      duration: 200,
-      easingFunction: 'ease-in-out',
-      horizontal: false
-    },
+    // swapAnimation: {
+    //   duration: 200,
+    //   easingFunction: 'ease-in-out',
+    //   horizontal: false
+    // },
     plugins: [Plugins.SwapAnimation]
   });
-  const handleOpenTask = (e)=>{
+  const handleOpenTask = async(e)=>{
     let target = e.target.closest('li');
     let listItems = document.querySelectorAll('li');
     listItems.forEach(li => {
@@ -57,11 +57,11 @@ const viewController = (()=>{
     let task = hol.querySelector('.taskText')
     task.classList.toggle('completed')
   }
-  const handleMenuOpen = async()=>{
+  const handleMenuOpen = ()=>{
     menuOpen.classList.toggle("change")
     sideBar.classList.toggle('openBar')
     adder.classList.remove('add')
-    
+    adder.classList.toggle('hide')
     main.classList.toggle('openSideBar')
     taskContainer.classList.toggle('hidden')
     taskHeader.classList.toggle('hidden')
