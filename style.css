@@ -16,21 +16,55 @@ body{
 }
 .sidebar{
     width: 0px;
+    opacity: 0;
     height: 100vh; 
-    background-color: lightskyblue;
-    transition: .5s all ;
+    background-color: lightcoral;
+    transition: .3s all ease-in-out ;
     overflow-x: hidden;
     overflow-y: scroll;
+   
 }
 .sidebar.openBar{
-    width: 30%;
+    width: 20%;
+    opacity: 1;
     height: 100vh; 
 }
 .sidebarContent{
     width: 100%;
-    min-width: 300px;
+    min-width: 200px;
     height: 100%;
     text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    
+}
+.sideItem{
+    width: 90%;
+    height: 30px;
+    display: flex;
+    font-size: 3vh;
+    align-items: center;
+    justify-content: flex-end;
+    text-align: right;
+    opacity: .7;
+    margin-bottom: 10%;
+    cursor: pointer;
+
+}
+.sideItem:hover{
+    opacity: 1;
+}
+.menuDel{
+    opacity: .3;
+}
+.menuDel:hover{
+    opacity: 1;
+}
+h6{
+    margin-right:6%;
+    width: 80%;
 }
 
 .main{
@@ -41,13 +75,13 @@ body{
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    transition: .5s all;
+    transition: .3s all;
 }
 
 .main.openSideBar{
-    width: 70%;
+    width: 80%;
     height: 100vh;
-    transition: 1s all ease;
+    transition: 1s all ;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -72,6 +106,9 @@ body{
 }
 .adder.add{
     transform: rotate(135deg);
+}
+.adder.hide{
+    opacity: 0;
 }
 /* Code for Hamburger Button */
 .menuOpen{
@@ -106,14 +143,14 @@ body{
 .taskContainer{
     width: 100%;
     min-width: 400px;
-    height: 90%;
+    height: 100%;
     opacity: 1;
     /* background-color: lightskyblue; */
     display: flex;
     flex-direction: column;
     align-items: center;
     overflow: scroll;
-    transition: .5s all;
+    transition: .3s all;
     justify-content: flex-start;
     align-items: center;
     margin-bottom: 10px;
@@ -128,11 +165,11 @@ body{
     flex-direction: column;
     align-items: center;
     overflow: scroll;
-    transition: .2s ease;
     justify-content: flex-start;
 }
 .taskHeader{
     margin-bottom: 0px;
+    margin-top: 20px;
     padding: 0px;
     width: 100%;
     text-align:left ;
@@ -145,16 +182,14 @@ body{
     width: 80%;
     text-align:left ;
     border-bottom: 2px solid gray;
-
 }
 
 ul{
     list-style-type:none;
     margin: 0px;
     padding: 0px;
-    transition: 1s all;
-    width: 60%;
 
+    width: 60%;
 }
 li:focus{
     outline: none;
@@ -168,8 +203,7 @@ li{
     height: 100px;
     justify-content: center;
     overflow: hidden;
-    transition: .5s height,.8s background-color;
-    /* transition: .5s background-color, height; */
+    transition: .3s height,.8s background-color;
 }
 
 .open{
@@ -183,7 +217,7 @@ li{
     display:flex;
     height: 50px;
     width: 100%;
-    transition: .5s all ease;
+    transition: .3s all ;
     align-items: center;
 }
 .optContainer{
@@ -295,7 +329,8 @@ li{
 .openArrow{
     padding-bottom: 1%;
     opacity: .5;
-    font-size: 3vh;
+    font-size: 4vh;
+    /* transition: .2s transform; */
 }
 .flag{
     opacity: .7;
@@ -333,10 +368,10 @@ li{
         font-size: 2vh;
     }
     .task{
-        width:60%;
+        width:50%;
     }
     .taskHeader{
-        text-align:center ;
+        
         justify-content: center;
     }
     .taskHeader.hidden{
@@ -348,5 +383,8 @@ li{
     ul{
         width: 88%;
         margin-right:5%;
+    }
+    .openArrow{
+        font-size: 4vh;
     }
 }

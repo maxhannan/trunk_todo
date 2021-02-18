@@ -14,6 +14,38 @@
     <div id="content">
     <div class="sidebar">
         <div class="sidebarContent">
+            <div class="sideItem">
+                <i  class="fas fa-times menuDel"></i>
+                <h6>Inbox</h6>
+                <i class="fas fa-inbox sideIcon"></i>
+            </div>
+            <div class="sideItem"> 
+                <i  class="fas fa-times menuDel"></i>
+                <h6>Today</h6>
+                <i class="far fa-star sideIcon"></i>
+            </div>
+            <div class="sideItem">
+                <i  class="fas fa-times menuDel"></i>
+                <h6>Upcoming</h6>
+                <i class="fas fa-retweet sideIcon"></i>
+            </div>
+            <div class="sideItem">
+                <i  class="fas fa-times menuDel"></i>
+                <h6>Work</h6>
+                <i class="far fa-folder sideIcon"></i>
+            </div>
+            <div class="sideItem">
+                <i  class="fas fa-times menuDel"></i>
+                <h6>School</h6>
+                <i class="far fa-folder sideIcon"></i>
+            </div>
+            <div class="sideItem">
+                <i  class="fas fa-times menuDel"></i>
+                <h6>Development</h6>
+                <i class="far fa-folder sideIcon"></i>            
+            </div>
+
+
         </div>
     </div>
     <div class = 'main'>
@@ -30,7 +62,7 @@
         <div class="taskContainer">
             <!-- <div class="taskHeader">inbox</div> -->
             <ul>
-                <div class="taskHeader">inbox</div>
+                <div class="taskHeader">today</div>
                 <li >
                 <div class="taskHolder">
                     <div class="checker"></div>
@@ -57,41 +89,17 @@
                 <div class="taskHolder">
                     <div class="checker"></div>
                     <div class="task">
-                        <input type="text" class="taskText" value = 'Schedule a dance Party.' disabled>
+                        <input type="text" class="taskText" value = 'Work on Javascript practice problems.' disabled>
                     </div>
                     <div class ='dueDate'>
                         <input type="date" class='date' id="date" value="07-22" disabled>
                     </div>
                     <div class="grabLines opt"><i class="fas fa-grip-lines"></i></div>
                     
-                   
                 </div>
                 <div class="optContainer">
                     <div class="openArrow opt"><i class="fas fa-sort-down"></i></div>
-                    <div style = 'color: lightgreen' class="flag opt"><i class="fas fa-flag"></i></div>
-                    <div class="edit opt"><i class="fas fa-edit"></i></div>
-                    <div class="delBtn opt"><i class="fas fa-trash-alt"></i></div>
-                </div>
-                <div class = 'contentHolder'>
-                    <textarea class="descripText" cols="40" rows="5">Description</textarea>
-                </div>
-            </li> 
-            <li >
-                <div class="taskHolder">
-                    <div class="checker"></div>
-                    <div class="task">
-                        <input type="text" class="taskText" value = 'Go to the Moon.' disabled>
-                    </div>
-                    <div class ='dueDate'>
-                        <input type="date" class='date' id="date" value="07-22" disabled>
-                    </div>
-                    <div  class="grabLines opt"><i class="fas fa-grip-lines"></i></div>
-                    
-                   
-                </div>
-                <div class="optContainer">
-                    <div class="openArrow opt"><i class="fas fa-sort-down"></i></div>
-                    <div style = 'color: paleturquoise' class="flag opt"><i class="fas fa-flag"></i></div>
+                    <div class="flag opt"><i class="fas fa-flag"></i></div>
                     <div class="edit opt"><i class="fas fa-edit"></i></div>
                     <div class="delBtn opt"><i class="fas fa-trash-alt"></i></div>
                 </div>
@@ -125,54 +133,6 @@
                 <div class="taskHolder">
                     <div class="checker"></div>
                     <div class="task">
-                        <input type="text" class="taskText" value = 'Schedule a dance Party.' disabled>
-                    </div>
-                    <div class ='dueDate'>
-                        <input type="date" class='date' id="date" value="07-22" disabled>
-                    </div>
-                    <div class="grabLines opt"><i class="fas fa-grip-lines"></i></div>
-                    
-                   
-                </div>
-                <div class="optContainer">
-                    <div class="openArrow opt"><i class="fas fa-sort-down"></i></div>
-                    <div style = 'color: lightgreen' class="flag opt"><i class="fas fa-flag"></i></div>
-                    <div class="edit opt"><i class="fas fa-edit"></i></div>
-                    <div class="delBtn opt"><i class="fas fa-trash-alt"></i></div>
-                </div>
-                <div class = 'contentHolder'>
-                    <textarea class="descripText" cols="40" rows="5">Description</textarea>
-                </div>
-            </li> 
-            <li >
-                <div class="taskHolder">
-                    <div class="checker"></div>
-                    <div class="task">
-                        <input type="text" class="taskText" value = 'Go to the Moon.' disabled>
-                    </div>
-                    <div class ='dueDate'>
-                        <input type="date" class='date' id="date" value="07-22" disabled>
-                    </div>
-                    <div  class="grabLines opt"><i class="fas fa-grip-lines"></i></div>
-                    
-                   
-                </div>
-                <div class="optContainer">
-                    <div class="openArrow opt"><i class="fas fa-sort-down"></i></div>
-                    <div style = 'color: paleturquoise' class="flag opt"><i class="fas fa-flag"></i></div>
-                    <div class="edit opt"><i class="fas fa-edit"></i></div>
-                    <div class="delBtn opt"><i class="fas fa-trash-alt"></i></div>
-                </div>
-                <div class = 'contentHolder'>
-                    <textarea class="descripText" cols="40" rows="5">Description</textarea>
-                </div>
-            </li> 
-            
-
-            <li >
-                <div class="taskHolder">
-                    <div class="checker"></div>
-                    <div class="task">
                         <input type="text" class="taskText" value = 'Work on Javascript practice problems.' disabled>
                     </div>
                     <div class ='dueDate'>
@@ -191,57 +151,11 @@
                     <textarea class="descripText" cols="40" rows="5">Description</textarea>
                 </div>
             </li> 
-            <li >
-                <div class="taskHolder">
-                    <div class="checker"></div>
-                    <div class="task">
-                        <input type="text" class="taskText" value = 'Schedule a dance Party.' disabled>
-                    </div>
-                    <div class ='dueDate'>
-                        <input type="date" class='date' id="date" value="07-22" disabled>
-                    </div>
-                    <div class="grabLines opt"><i class="fas fa-grip-lines"></i></div>
-                    
-                   
-                </div>
-                <div class="optContainer">
-                    <div class="openArrow opt"><i class="fas fa-sort-down"></i></div>
-                    <div style = 'color: lightgreen' class="flag opt"><i class="fas fa-flag"></i></div>
-                    <div class="edit opt"><i class="fas fa-edit"></i></div>
-                    <div class="delBtn opt"><i class="fas fa-trash-alt"></i></div>
-                </div>
-                <div class = 'contentHolder'>
-                    <textarea class="descripText" cols="40" rows="5">Description</textarea>
-                </div>
-            </li> 
-            <li >
-                <div class="taskHolder">
-                    <div class="checker"></div>
-                    <div class="task">
-                        <input type="text" class="taskText" value = 'Go to the Moon.' disabled>
-                    </div>
-                    <div class ='dueDate'>
-                        <input type="date" class='date' id="date" value="07-22" disabled>
-                    </div>
-                    <div  class="grabLines opt"><i class="fas fa-grip-lines"></i></div>
-                    
-                   
-                </div>
-                <div class="optContainer">
-                    <div class="openArrow opt"><i class="fas fa-sort-down"></i></div>
-                    <div style = 'color: paleturquoise' class="flag opt"><i class="fas fa-flag"></i></div>
-                    <div class="edit opt"><i class="fas fa-edit"></i></div>
-                    <div class="delBtn opt"><i class="fas fa-trash-alt"></i></div>
-                </div>
-                <div class = 'contentHolder'>
-                    <textarea class="descripText" cols="40" rows="5">Description</textarea>
-                </div>
-            </li> 
             
-
             
-
         </ul> 
+        
+    
     </div>
     </div>
     </div>
