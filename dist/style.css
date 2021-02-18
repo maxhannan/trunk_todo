@@ -31,6 +31,7 @@ body{
     width: 100%;
     overflow: hidden;
     height: 100vh;
+
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -175,7 +176,7 @@ li:hover{
 .taskHolder{
     display:flex;
     height: 50px;
-    width: 98%;
+    width: 100%;
     transition: .5s all ease;
     background-color: #1b1b1b;
     align-items: center;
@@ -329,26 +330,19 @@ li:hover{
     .task{
         width:50%;
     }
+    .taskHeader{
+        text-align:center ;
+    }
     .taskHeader.hidden{
         opacity:0;
-        margin-bottom: 0px;
-        padding: 0px;
-        width: 80%;
-        text-align:left ;
-        border-bottom: 2px solid gray;
+
     
     }
     .taskContainer.hidden{
         opacity:0;
-        width: 100%;
-        min-width: 400px;
-        height: 90%;
-        /* background-color: lightskyblue; */
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        overflow: scroll;
-        transition: .2s ease;
-        justify-content: flex-start;
+
+    }
+    ul{
+        width: 95%;
     }
   }
