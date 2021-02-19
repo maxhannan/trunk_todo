@@ -19,7 +19,7 @@ body{
     opacity: 0;
     height: 100vh; 
     background-color: lightcoral;
-    transition: .3s all ease-in-out ;
+    transition: .3s all ;
     overflow-x: hidden;
     overflow-y: scroll;
 }
