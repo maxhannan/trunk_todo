@@ -29,19 +29,20 @@ const sideBar = (()=>{
         sidebarContent.classList.add('sidebarContent')
         sidebarContent.innerHTML = `
             <div class="sideItem filter" id = 'inbox'>
-            
                 <h6>Inbox</h6>
                 <i class="fas fa-inbox sideIcon"></i>
             </div>
             <div class="sideItem filter" id = 'today'> 
-              
                 <h6>Today</h6>
                 <i class="far fa-star sideIcon"></i>
             </div>
             <div class="sideItem filter" id = 'upcoming'>
-            
                 <h6>Upcoming</h6>
                 <i class="fas fa-retweet sideIcon"></i>
+            </div>
+            <div class="sideItem filter" id = 'completed'>
+                <h6>Completed</h6>
+                <i class="far fa-check-circle"></i>
             </div>
             <div class="sideItem sideBarAdder">
                     <i class="fas fa-folder-plus"></i>            

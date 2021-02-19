@@ -1,8 +1,10 @@
 import { Sortable, Plugins } from '@shopify/draggable';
 import { format } from 'date-fns'
+import {todoDivFactory} from './todo'
+import {todoList} from './todoModel'
 const viewController = (()=>{
   // cacheHTML
-  let taskHeader,taskContainer, sideBar, menuOpen, adder,main;
+  let taskHeader,taskContainer, sideBar, menuOpen, adder,main,taskList;
   const cacheHtml = () =>{
      taskHeader = document.querySelector('.taskHeader')
      taskContainer = document.querySelector('.taskContainer')
@@ -10,6 +12,7 @@ const viewController = (()=>{
      main = document.querySelector('.main')
      menuOpen = document.querySelector('.menuOpen')
      adder = document.querySelector('.adder')
+    taskList = document.querySelector('#taskList')
   }
   
   
@@ -23,11 +26,13 @@ const viewController = (()=>{
       draggable: 'li',
       //hides mirror
       mirror: {
-        appendTo: '.hidden'
+      //   appendTo: '.hidden'
+        constrainDimensions: true,
+        yAxis: true
       },
       swapAnimation: {
-        duration: 300,
-        easingFunction: 'ease-in-out',
+        duration: 200,
+        easingFunction: 'ease',
         horizontal: false
       },
       plugins: [Plugins.SwapAnimation]
@@ -107,6 +112,13 @@ const viewController = (()=>{
     main.classList.remove('openSideBar')
     taskContainer.classList.remove('hidden')
     taskHeader.classList.remove('hidden')
+
+    let list = todoList.getArray()
+    let div = todoDivFactory(list[1]);
+    taskList.appendChild(div);
+  
+    viewController.bindEvents();
+
   }
   
   const handleDel = function(e){
@@ -129,6 +141,7 @@ const viewController = (()=>{
     // listeners for task updates
     inputs.forEach(input => input.addEventListener('change', ()=>{
       const newVal = input.value;
+      console.log(newVal)
       if(input.id === 'date'){
         let vals = input.value.split('/')
         console.log(vals)

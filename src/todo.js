@@ -11,7 +11,6 @@ const todoDivFactory = (todo)=>{
     let vals = todo.duedate.split('/')
     const day = Number(vals[0] -1)
     let result = format(new Date( vals[2], day, vals[1]), 'MMM do yyyy');
-    console.log(todo.completed)
     const todoDiv = document.createElement('li')
     todoDiv.id = todo.getId();
     todoDiv.innerHTML = `

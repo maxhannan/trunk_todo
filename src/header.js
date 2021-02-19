@@ -1,5 +1,5 @@
 import{viewController} from './viewController'
-const headerBuilder = ()=>{
+const headerBuilder = (page)=>{
     const main = document.querySelector('.main')
     // build header
     const header = document.createElement('div');
@@ -10,6 +10,7 @@ const headerBuilder = ()=>{
             <div class="bar2"></div>
             <div class="bar3"></div>
         </div>
+        <div class="taskHeader">${page}</i></div>
         <div class="adder">
             <i class="fas fa-plus"></i>
         </div>
