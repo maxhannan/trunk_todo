@@ -203,7 +203,7 @@ li{
     height: 100px;
     justify-content: center;
     overflow: hidden;
-    transition: .3s height,.8s background-color;
+
 }
 
 .open{
