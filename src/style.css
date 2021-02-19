@@ -95,11 +95,12 @@ h6{
 .header{
     height: 10%;
     width: 100%;
- 
+    font-size:4vh;
     color: white;
     font-size: 50px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     background-color: transparent;
 }
 
@@ -120,7 +121,7 @@ h6{
 /* Code for Hamburger Button */
 .menuOpen{
     margin-left: 2%;
-    margin-top: 22px;
+
     margin-right:10px ;
     cursor: pointer;
     opacity: 1;
@@ -199,7 +200,7 @@ ul{
     list-style-type:none;
     margin: 0px;
     padding: 0px;
-    width: 60%;
+    width: 70%;
 }
 ul:focus{
     outline: none;
@@ -385,5 +386,8 @@ li{
     }
     .header{
         font-size: 30px;
+    }
+    .adder{
+        font-size: 4vh;
     }
 }
