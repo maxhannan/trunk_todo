@@ -21,7 +21,7 @@ const todoDivFactory = (todo)=>{
                     <input type="text" class="taskText ${todo.completed ? 'completed': ''}" value = '${todo.task}' disabled>
                 </div>
                 <div class ='dueDate'>
-                    <input type="date" class='date' id="date" value="${result}" disabled>
+                    <input type="text" class='date' id="date" value="${result}" disabled>
                 </div>
                 <div class="grabLines opt">
                     <i class="fas fa-grip-lines"></i>
