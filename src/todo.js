@@ -1,4 +1,5 @@
 import { format } from 'date-fns'
+
 const todoDivFactory = (todo)=>{
     let color;
     if(todo.priority === 1){
@@ -8,9 +9,9 @@ const todoDivFactory = (todo)=>{
     }else{
          color = 'red';
     }
-    let vals = todo.duedate.split('/')
-    const day = Number(vals[0] -1)
-    let result = format(new Date( vals[2], day, vals[1]), 'MMM do yyyy');
+    let vals = todo.duedate
+    
+    let result = format(new Date(vals), 'MM/dd/yyyy');
     const todoDiv = document.createElement('li')
     todoDiv.id = todo.getId();
     todoDiv.innerHTML = `
