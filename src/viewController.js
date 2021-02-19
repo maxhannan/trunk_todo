@@ -1,12 +1,17 @@
 import { Sortable, Plugins } from '@shopify/draggable';
+import { format } from 'date-fns'
 const viewController = (()=>{
   // cacheHTML
-  const taskHeader = document.querySelector('.taskHeader')
-  const taskContainer = document.querySelector('.taskContainer')
-  const sideBar = document.querySelector('.sidebar')
-  const menuOpen = document.querySelector('.menuOpen')
-  const adder = document.querySelector('.adder')
-  const main = document.querySelector('.main')
+  let taskHeader,taskContainer, sideBar, menuOpen, adder,main;
+  const cacheHtml = () =>{
+     taskHeader = document.querySelector('.taskHeader')
+     taskContainer = document.querySelector('.taskContainer')
+     sideBar = document.querySelector('.sidebar')
+     main = document.querySelector('.main')
+     menuOpen = document.querySelector('.menuOpen')
+     adder = document.querySelector('.adder')
+  }
+  
   
   // sleep function
   const sleep = (ms)=>{
@@ -62,6 +67,7 @@ const viewController = (()=>{
     }
     if(date.disabled){
       date.disabled = false;
+      date.value = 'mm/dd/yy'
     }else{
       date.disabled = true;
     }
@@ -122,23 +128,34 @@ const viewController = (()=>{
     openBtns.forEach(btn => btn.removeEventListener('mousedown', handleOpenTask))
     // listeners for task updates
     inputs.forEach(input => input.addEventListener('change', ()=>{
-      console.log(input.value)
+      const newVal = input.value;
+      if(input.id === 'date'){
+        let vals = input.value.split('/')
+        console.log(vals)
+        const day = Number(vals[0] -1)
+        let result = format(new Date( vals[2], day, vals[1]), 'MMM do yy');
+        input.value = result;
+        console.log(result)
+      }
     }));
-    console.log(bins)
     // Add Event Listeners
     bins.forEach(bin => bin.addEventListener('click', handleDel))
     checkers.forEach(check => check.addEventListener('mousedown', handleCheck))
     edit.forEach(editBtn => editBtn.addEventListener('mousedown', handleChange));
     openBtns.forEach(btn => btn.addEventListener('mousedown', handleOpenTask))
   }
- 
-  // Event listeners for static elements. 
-  adder.addEventListener('click', handleAdd)
-  menuOpen.addEventListener('click', handleMenuOpen);
 
+  const handlePageChange = (e) =>{
+    console.log(e.target.closest('div').id);
+  }
+ 
   return{
+    cacheHtml,
     bindEvents,
-    bindsort
+    bindsort,
+    handleAdd,
+    handleMenuOpen,
+    handlePageChange
   } 
 })();
 

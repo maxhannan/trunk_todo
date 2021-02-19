@@ -1,17 +1,15 @@
 
-import { formatDistance, subDays } from 'date-fns'
 
-console.log(formatDistance(subDays(new Date(), 4), new Date(), { addSuffix: true }))
 
 const todoList = (()=>{
     let base_id = 0;
     const todosArray =  [];
     const getArray = () => [...todosArray];
-    
     const todoFactory = (task,duedate,description,priority = 1,sectionId = 0)=>{
         // gives unique id to each object, regardless of index in list
         const id = base_id;
         base_id ++
+        const getId = () => id;
         let completed = false;
         const newTodo = {
             task,
@@ -20,7 +18,7 @@ const todoList = (()=>{
             description,
             completed,
             sectionId,
-            id
+            getId
         }
         todosArray.push(newTodo)
         return newTodo
@@ -34,7 +32,7 @@ const todoList = (()=>{
 
     const updateTodo = (id,prop, newVal) =>{
         todosArray.forEach(todo =>{
-            if(todo.id === id){
+            if(todo.getId() === id){
                 switch(prop){
                     case 'task':
                         todo.task = newVal;
