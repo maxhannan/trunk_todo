@@ -263,7 +263,7 @@ li{
 }
 .task{
     flex-grow: 2;
-    width: 75%;
+    width: 70%;
     /* background-color: lightgreen; */
     height: 100%;
     display: flex;
@@ -285,7 +285,7 @@ li{
     
 }
 .dueDate{
-    width: 15%;
+    width: 20%;
     height: 100%;
     display: flex;
 }
@@ -293,7 +293,7 @@ li{
 .date{
     width:100%;
     opacity: .5;
-    font-size: 3vh;
+    font-size: 2.5vh;
     text-align: center;
     background-color: transparent;
     border: none;
