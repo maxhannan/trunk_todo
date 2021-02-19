@@ -383,4 +383,7 @@ li{
     .openArrow{
         font-size: 4vh;
     }
+    .header{
+        font-size: 30px;
+    }
 }
