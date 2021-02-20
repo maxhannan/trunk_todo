@@ -59,12 +59,13 @@ const sideBar = (()=>{
     
     // add items to sidebar
     const AddSection = (section = '') =>{
+        let sectionName;
         if(section = ''){
-            let sectionName = prompt('Section Name')
+            sectionName = prompt('Section Name')
         }else{
             sectionName = section; 
         }
-       let sectionName = prompt('Section Name')
+       
        let validName = sectionName.length > 0 ? true: false;
        while(!validName){
         sectionName = prompt('Try Again')

@@ -22,7 +22,7 @@ const todoList = (()=>{
     const todoFactory = (task,date,description,priority = 1,sectionId = 0)=>{
         // gives unique id to each object, regardless of index in list
         let duedate = new Date(date);
-        const id = getRandomInt(0,10000000)
+        const id = getRandomInt(0,100000000000000)
         
 
 
