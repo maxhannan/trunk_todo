@@ -1,6 +1,6 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 body{
-    background-color: #252525;
+    background-color: #1b1b1b;
     font-family: 'Poppins', sans-serif;
     /* color:white; */
     /* overflow: hidden; */
@@ -20,6 +20,7 @@ body{
     opacity: 0;
     height: 100vh; 
     background-color: #1b1b1b;
+    border-right: 1px solid black;
     transition: .5s ease ;
     overflow-x: hidden;
     overflow-y: scroll;
@@ -29,6 +30,7 @@ body{
     width: 20%;
     opacity: 1;
     height: 100vh; 
+    
 }
 .sidebarContent{
     transition: .3s all;
@@ -58,7 +60,24 @@ body{
 .sideItem:hover{
     opacity: 1;
 }
+.formBar{
+    color:white;
+    width: 0px;
+    opacity: 0;
+    height: 100vh; 
+    background-color: #1b1b1b;
+    border-left: 1px solid black;
+    transition: .5s ease ;
+    overflow-x: hidden;
+    overflow-y: scroll;
 
+}
+.formBar.openBar{
+    width: 50%;
+    opacity: 1;
+    height: 100vh; 
+    
+}
 .menuDel{
     opacity: .3;
 }
@@ -71,7 +90,7 @@ h6{
 }
 
 .main{
-
+    
     width: 100%;
     overflow: hidden;
     height: 100vh;
@@ -96,12 +115,14 @@ h6{
     height: 10%;
     width: 100%;
     font-size:4vh;
+    background-color: #1b1b1b;
     color: white;
     font-size: 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: transparent;
+
+    border-bottom: 1px solid black;
 }
 
 .adder{
@@ -114,6 +135,8 @@ h6{
 }
 .adder.add{
     transform: rotate(135deg);
+    justify-content: flex-start;
+    margin-right: 4%;
 }
 .adder.hide{
     opacity: 0;
@@ -126,6 +149,9 @@ h6{
     cursor: pointer;
     opacity: 1;
     width: 30px;
+}
+.menuOpen.hidden{
+    display: none;
 }
 .bar1, .bar2, .bar3 {
     width: 30px;
@@ -149,6 +175,8 @@ h6{
     transform: rotate(45deg) translate(-6px, -7px);
   }
 .taskContainer{
+    margin-bottom: 5%;
+ 
     width: 100%;
     min-width: 400px;
     height: 100%;
@@ -167,7 +195,7 @@ h6{
     opacity:1;
     width: 100%;
     min-width: 400px;
-    height: 90%;
+    height: 100%;
     /* background-color: lightskyblue; */
     display: flex;
     flex-direction: column;
@@ -176,12 +204,10 @@ h6{
     justify-content: flex-start;
 }
 .taskHeader{
- 
-    margin-left:3%;
-    margin-right:3%;
 
     width: 80%;
     text-align:center ;
+    /* transition: .5s all; */
 
 }
 .taskHeader.hidden{
@@ -200,7 +226,7 @@ ul{
     list-style-type:none;
     margin: 0px;
     padding: 0px;
-    width: 70%;
+    width: 85%;
 }
 ul:focus{
     outline: none;
@@ -210,11 +236,11 @@ li:focus{
 }
 
 li{
-    border: 3px solid #1b1b1b;
-    background-color: #252525;
-    border-radius: 15px;
+    border-bottom: 3px solid #252525;
+    background-color: #1b1b1b;
+    border-radius: 2px;
     margin-top:10px;
-    height: 100px;
+    height: 90px;
     justify-content: center;
     overflow: hidden;
 
@@ -234,15 +260,16 @@ li{
 }
 .optContainer{
     display: flex;
-    height:50px;
+    height:30px;
     align-items: center;
-    justify-content: space-between;
+    justify-content:flex-end;
     
     font-size: 2vh;
 }
 
 .contentHolder{
     height:100px;
+    margin-top: 10px;
     width: 100%;
     display: flex;
     /* background-color: green; */
@@ -250,7 +277,7 @@ li{
 .descripText{
     width: 100%;
     font-size: 2.5vh;
-    padding-left: 65px;
+    padding-left: 80px;
     color:gray;
     background-color: transparent;
     border: none;
@@ -284,40 +311,45 @@ li{
 }
 .taskText.completed{
     text-decoration: line-through;
+    opacity: .5;
     color: gray;
 }
 .taskText{
     width:100%;
-    font-size: 3vh;
+    font-size: 4vh;
     padding-left: 5%;
     background-color: transparent;
     border: none;
     font-family:'Poppins' sans-serif ;
     color: white;
-    opacity: .5;
-    transition: .2s color;
+
+    transition: .5s color;
+ 
     
 }
 .dueDate{
     width: 20%;
     height: 100%;
     display: flex;
+    margin-right: auto;
+    margin-left: 35px;
 }
 
 .date{
     width:100%;
-    opacity: .5;
-    font-size: 2.5vh;
+    opacity: .4;
+    font-size: 3vh;
     text-align: center;
     background-color: transparent;
     border: none;
     padding: 0px;
+
     font-family:'Poppins' sans-serif ;
     transition: .5s color;
-    color: gray;
+    color: darkred;
 }
 .opt{
-    width: 10%;
+    width: 8%;
     height: 100%;
     opacity: .7;
     font-size: 2.5vh;
@@ -352,14 +384,21 @@ li{
     .sidebar.openBar{
         width: 90vw;
     }
+    .formBar.openBar{
+        width: 90vw;
+    }
     .main.openSideBar{
         width: 10vw;
     }
     .taskText{
-        font-size: 1.8vh;
+        font-size: 2.5vh;
     }
     .date{
-        font-size: 1.8vh;
+        font-size: 2.2vh;
+    }
+    .dueDate{
+        margin-left:40px;
+       
     }
     .opt{
         font-size: 2vh;
@@ -373,6 +412,7 @@ li{
     }
     .taskHeader.hidden{
         opacity:0;
+        width: 0;
     }
     .taskContainer.hidden{
         opacity:0;

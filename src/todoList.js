@@ -15,8 +15,11 @@ const todoListMaster = (()=>{
         ul.classList.add('taskList')
         newList.appendChild(ul)
         main.appendChild(newList);
+        // build new header with correct name
         headerBuilder(section);
+        // get todo section
         let todos = todoList.getArraySection(section)
+    
         todos.forEach(todo =>{
             let div = todoDivFactory(todo);
             ul.appendChild(div);
@@ -30,7 +33,7 @@ const todoListMaster = (()=>{
     
             bin.addEventListener('click', handleDel)
             checker.addEventListener('mousedown', handleCheck)
-            textInp.addEventListener('change', (e)=> console.log(e.target.value))
+            
             openBtn.addEventListener('mousedown', handleOpenTask)
             editBtn.addEventListener('mousedown', handleChange)
     
@@ -42,6 +45,11 @@ const todoListMaster = (()=>{
             const id = e.target.closest('li').id
             const newVal = e.detail.date
             console.log(todoList.getArrayIndex(id))
+            })
+            textInp.addEventListener('change', (e)=> {
+                const id = e.target.closest('li').id
+                const newVal = e.target.value
+                console.log(todoList.getArrayIndex(id))
             })
         })
         bindsort();
@@ -75,7 +83,7 @@ const todoListMaster = (()=>{
         target.classList.toggle('open')
       }
     
-      const handleChange = (e) =>{
+    const handleChange = (e) =>{
         const inputDiv = e.target.closest('li')
         const text = inputDiv.querySelector('.taskText')
         const date = inputDiv.querySelector('#date')
@@ -123,15 +131,6 @@ const todoListMaster = (()=>{
     }
 })()
 
-
-
-{/* 
-<div class="taskContainer">
-    <ul id = 'taskList'>
-          
-    </ul>         
-</div> 
-*/}
 export{
     todoListMaster
 }

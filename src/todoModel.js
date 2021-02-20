@@ -4,10 +4,14 @@ import {isWithinInterval} from 'date-fns';
 const todoList = (()=>{
     let base_id = 0;
     const todosArray =  [];
-    const getArray = () => [...todosArray];
-    const todoFactory = (task,duedate,description,priority = 1,sectionId = 0)=>{
+    const getArray = () => {
+        //sorts array by date and returns copy
+        return [...todosArray].sort((a, b) => a.duedate- b.duedate);
+    }
+    
+    const todoFactory = (task,date,description,priority = 1,sectionId = 0)=>{
         // gives unique id to each object, regardless of index in list
-
+        let duedate = new Date(date);
         const id = base_id;
         base_id ++
         const getId = () => id;

@@ -4,6 +4,7 @@ import '../node_modules/vanillajs-datepicker/sass/datepicker.scss'
 import './tester'
 import {viewController} from './viewController'
 import {todoListMaster} from './todoList'
+import {formControl} from './formControl'
 import{sideBar} from './sidebar'
 
 
@@ -11,4 +12,5 @@ import{sideBar} from './sidebar'
 
 sideBar.sideBarBuilder();
 todoListMaster.todoListBuilder('inbox');
+formControl();
 viewController.cacheHtml();
