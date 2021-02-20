@@ -20,7 +20,7 @@ const todoController = (()=>{
         console.log({todo})
         let result = format(new Date(vals), 'MM/dd/yyyy');
         const todoDiv = document.createElement('li')
-        todoDiv.id = todo.getId;
+        todoDiv.id = todo.id;
         if(edit){
             todoDiv.classList.add('open')
         }
@@ -88,6 +88,7 @@ const todoController = (()=>{
     }
     const handleFlags =(e)=>{
         const li_id = e.target.closest('li').id
+        const ix = todoList.getArrayIndex(li_id)
         const colors = ['white', 'green', 'yellow', 'red'];
         let target = e.target.closest('div')
         let priority = target.id 
@@ -97,7 +98,7 @@ const todoController = (()=>{
         if(newPriority > 3){
            newPriority = 0;
         }
-        todoList.updateTodo(li_id, 'priority', newPriority);
+        todoList.updateTodo(ix, 'priority', newPriority);
         target.id = newPriority
         target.querySelector('#flag').style.color = colors[newPriority]
     }
@@ -105,19 +106,21 @@ const todoController = (()=>{
     const handleDel = function(e){
         let garbageDiv = e.target.closest('li')
         const li_id = garbageDiv.id
-        todoList.deleteTodo(li_id);
+        const ix = todoList.getArrayIndex(li_id)
+        todoList.deleteTodo(ix);
         garbageDiv.remove();
     }
 
     const handleCheck = async function(e){
         const id = e.target.closest('li').id
+        let ix = todoList.getArrayIndex(id)
         let hol = e.target.closest('.taskHolder');
         let task = hol.querySelector('.taskText');
         // toggle checked class
         e.target.classList.toggle('checked');
         // Strike-through text
         task.classList.toggle('completed');
-        todoList.updateTodo(id, 'completed')
+        todoList.updateTodo(ix, 'completed')
         await viewController.sleep(2000)
         todoListMaster.todoListBuilder(viewController.getcurrent());
 
@@ -126,6 +129,7 @@ const todoController = (()=>{
     const handleUpdate  = (e)=>{
       const id = e.target.closest('li').id
       let type = e.target.id
+      let ix = todoList.getArrayIndex(id)
       let newVal;
       let prop;
 
@@ -144,7 +148,7 @@ const todoController = (()=>{
             break  
 
       }
-      todoList.updateTodo(id, prop, newVal)
+      todoList.updateTodo(ix, prop, newVal)
 
     }
 
@@ -173,7 +177,7 @@ const todoController = (()=>{
         if(text.disabled){
           text.disabled = false;
         }else{
-            finished = true;
+            
           text.disabled = true;
         }
         if(date.disabled){
@@ -188,6 +192,7 @@ const todoController = (()=>{
         date.classList.toggle('yellow')
         e.target.closest('.edit').classList.toggle('yellow');
         if(finished){
+            console.log({finished})
             todoListMaster.todoListBuilder(viewController.getcurrent());
         }
     }

@@ -2,22 +2,30 @@
 import {isWithinInterval} from 'date-fns';
 
 const todoList = (()=>{
-    let base_id = 0;
-   
-    const todosArray =  [];
+    // let base_id = 0;
+    let jarr = JSON.parse(localStorage.getItem('tdarr'))
+    let todosArray = jarr ||  [];
+    
 
+    console.log(todosArray)
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min) + min); 
+    }
     const getArray = () => {
         //sorts array by date and returns copy
-        return [...todosArray].sort((a, b) => b.duedate-a.duedate);
+        console.log([...todosArray].sort((a,b) => new Date(b.duedate) - new Date(a.duedate)))
+        return ([...todosArray].sort((a,b) => new Date(b.duedate) - new Date(a.duedate)))
     }
     
     const todoFactory = (task,date,description,priority = 1,sectionId = 0)=>{
         // gives unique id to each object, regardless of index in list
         let duedate = new Date(date);
-        const id = base_id;
-        base_id ++;
+        const id = getRandomInt(0,10000000)
+        
 
-        const getId = () => id;
+
         let completed = false;
 
         const newTodo = {
@@ -27,9 +35,9 @@ const todoList = (()=>{
             description,
             completed,
             sectionId,
-            getId,
+            id,
         }
-        
+
         todosArray.push(newTodo)
         return newTodo
     }
@@ -38,9 +46,8 @@ const todoList = (()=>{
         // returns a filtered array of todos
         switch(section){
             case 'inbox':
-                
                 return  getArray()
-                .filter(todo => !todo.completed);
+                .filter(todo => !todo.completed)
                 break;
             case 'today':
                 return getArray()
@@ -66,14 +73,16 @@ const todoList = (()=>{
     const getArrayIndex = (id)=>{
         // returns index of todo with that id 
         let result;
-        let arr = getArray();
+        let arr  = getArray();
         for(let ix = 0; ix < arr.length; ix++){
-            if(arr[ix].getId() === Number(id)){
+            if(arr[ix].id === Number(id)){
                 let todo = arr[ix]
-                result = {todo,ix, id} 
+                result = todosArray.indexOf(arr[ix])
+                console.log({result})
                 break;
             }
         }
+
          return result   
     }
     const isToday = (someDate) => {
@@ -97,7 +106,6 @@ const todoList = (()=>{
         return nextweek;
     }
     const updateTodo = (ix,prop, newVal = '') =>{
-                console.log({ix})
                 switch(prop){
                     case 'task':
                         todosArray[ix].task = newVal;
@@ -115,12 +123,14 @@ const todoList = (()=>{
                         todosArray[ix].priority = newVal;
                         break;
                 } 
+                localStorage.setItem('tdarr', JSON.stringify(todosArray));
                
                 
     }
 
     const deleteTodo = (ix)=>{
-        todosArray.splice(ix,1); 
+        todosArray.splice(ix,1);
+        localStorage.setItem('tdarr', JSON.stringify(todosArray)); 
          
     }
     const deleteSection = (section)=>{
@@ -129,6 +139,8 @@ const todoList = (()=>{
             console.log(todo)
             deleteTodo(todo.id)
         });
+        
+               
     }
     
     return{

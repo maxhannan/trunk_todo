@@ -6,6 +6,7 @@ import { Sortable, Plugins } from '@shopify/draggable';
 import { viewController } from './viewController';
 const todoListMaster = (()=>{
     const todoListBuilder = (section)=>{
+        // alert('building')
         // clear html
         const main = document.querySelector('.main');
         main.innerHTML = ''
