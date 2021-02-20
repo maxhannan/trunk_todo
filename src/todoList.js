@@ -1,8 +1,9 @@
 import {headerBuilder} from './header'
 import {todoList} from './todoModel'
-import {todoDivFactory} from './todo'
+import {todoController} from './todo'
 import { Datepicker } from 'vanillajs-datepicker';
 import { Sortable, Plugins } from '@shopify/draggable';
+import { viewController } from './viewController';
 const todoListMaster = (()=>{
     const todoListBuilder = (section)=>{
         // clear html
@@ -21,37 +22,35 @@ const todoListMaster = (()=>{
         let todos = todoList.getArraySection(section)
     
         todos.forEach(todo =>{
-            let div = todoDivFactory(todo);
-            ul.appendChild(div);
-            // adds event listeners
-            let dateInp = div.querySelector('#date');
-            let openBtn = div.querySelector('.openArrow');
-            let textInp = div.querySelector('.taskText')
-            let checker = div.querySelector('.checker')
-            let editBtn = div.querySelector('.edit')
-            let bin = div.querySelector('.delBtn');
+          todoController.todoDivFactory(todo,ul);
+            // ul.appendChild(div);
+            // // adds event listeners
+            // let dateInp = div.querySelector('#date');
+            // let openBtn = div.querySelector('.openArrow');
+            // let textInp = div.querySelector('.taskText')
+            // let checker = div.querySelector('.checker')
+            // let editBtn = div.querySelector('.edit')
+            // let bin = div.querySelector('.delBtn');
     
-            bin.addEventListener('click', handleDel)
-            checker.addEventListener('mousedown', handleCheck)
+            // bin.addEventListener('click', handleDel)
+            // checker.addEventListener('mousedown', handleCheck)
             
-            openBtn.addEventListener('mousedown', handleOpenTask)
-            editBtn.addEventListener('mousedown', handleChange)
+            // openBtn.addEventListener('mousedown', handleOpenTask)
+            // editBtn.addEventListener('mousedown', handleChange)
     
-            const datepicker = new Datepicker(dateInp, {
-                autohide: true,
-            }); 
+            // const datepicker = new Datepicker(dateInp, {
+            //     autohide: true,
+            // }); 
     
-            dateInp.addEventListener('changeDate', (e)=>{
-            const id = e.target.closest('li').id
-            const newVal = e.detail.date
-            console.log(todoList.getArrayIndex(id))
-            })
-            textInp.addEventListener('change', (e)=> {
-                const id = e.target.closest('li').id
-                const newVal = e.target.value
-                console.log(todoList.getArrayIndex(id))
-            })
+            // dateInp.addEventListener('changeDate',handleDateChange)
+
+            // textInp.addEventListener('change', (e)=> {
+            //     const id = e.target.closest('li').id
+            //     const newVal = e.target.value;
+            //     todoList.updateTodo(id, 'task', newVal)
+            // })
         })
+
         bindsort();
     }
     
@@ -67,6 +66,23 @@ const todoListMaster = (()=>{
         // Strike-through text
         task.classList.toggle('completed');
     }
+
+    const handleDateChange  = (e)=>{
+      const id = e.target.closest('li').id
+      const newVal = e.detail.date
+      todoList.updateTodo(id, 'duedate', newVal)
+      todoListBuilder(viewController.getcurrent());
+      const target = document.getElementById(id);
+      let dateInp = target.querySelector('#date');
+      let textInp = target.querySelector('.taskText');
+      let editBtn = target.querySelector('.edit')
+      textInp.disabled = false;
+      dateInp.disabled = false;
+      textInp.classList.toggle('yellow')
+      dateInp.classList.toggle('yellow')
+      editBtn.classList.toggle('yellow');
+    }
+
     const handleOpenTask = async(e)=>{
     
         let target = e.target.closest('li');
@@ -83,7 +99,7 @@ const todoListMaster = (()=>{
         target.classList.toggle('open')
       }
     
-    const handleChange = (e) =>{
+    const handleChange = (e, div = '') =>{
         const inputDiv = e.target.closest('li')
         const text = inputDiv.querySelector('.taskText')
         const date = inputDiv.querySelector('#date')
@@ -127,7 +143,12 @@ const todoListMaster = (()=>{
     }
       
     return{
-        todoListBuilder
+        todoListBuilder,
+        handleChange,
+        handleDel,
+        handleCheck,
+        handleOpenTask
+
     }
 })()
 

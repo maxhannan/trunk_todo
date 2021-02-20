@@ -12,5 +12,5 @@ import{sideBar} from './sidebar'
 
 sideBar.sideBarBuilder();
 todoListMaster.todoListBuilder('inbox');
-formControl();
+
 viewController.cacheHtml();

@@ -6,7 +6,7 @@ const todoList = (()=>{
     const todosArray =  [];
     const getArray = () => {
         //sorts array by date and returns copy
-        return [...todosArray].sort((a, b) => a.duedate- b.duedate);
+        return [...todosArray].sort((a, b) => b.duedate-a.duedate);
     }
     
     const todoFactory = (task,date,description,priority = 1,sectionId = 0)=>{
@@ -23,7 +23,8 @@ const todoList = (()=>{
             description,
             completed,
             sectionId,
-            getId
+            getId,
+            id
         }
         todosArray.push(newTodo)
         return newTodo
@@ -51,13 +52,13 @@ const todoList = (()=>{
        
     }
     const getArrayIndex = (id)=>{
-        // returns index of array with that id 
+        // returns index of todo with that id 
         let result;
         let arr = getArray();
         for(let ix = 0; ix < arr.length; ix++){
             if(arr[ix].getId() === Number(id)){
                 let todo = arr[ix]
-                result = {todo,ix} 
+                result = {todo,ix, id} 
                 break;
             }
         }
@@ -83,28 +84,30 @@ const todoList = (()=>{
         var nextweek = new Date(today.getFullYear(), today.getMonth(), today.getDate()+7);
         return nextweek;
     }
-    const updateTodo = (id,prop, newVal) =>{
-        todosArray.forEach(todo =>{
-            if(todo.getId() === id){
+    const updateTodo = (ix,prop, newVal) =>{
+                console.log({ix})
+          
                 switch(prop){
                     case 'task':
-                        todo.task = newVal;
+                        todosArray[ix].task = newVal;
                         break;
                     case 'duedate':
-                        todo.duedate = newVal;
+                        todosArray[ix].duedate = newVal;
+                        console.log(todosArray[ix] )
+                        console.log(todosArray[ix].duedate)
                         break;
-                    case 'priority':
-                        todo.priority = newVal;
-                        break;
-                    case 'description':
-                        todo.description = newVal;
-                        break;
-                    case 'completed':
-                        todo.completed = newVal;
-                        break;
+                    // case 'priority':
+                    //     todo.priority = newVal;
+                    //     break;
+                    // case 'description':
+                    //     todo.description = newVal;
+                    //     break;
+                    // case 'completed':
+                    //     todo.completed = newVal;
+                    //     break;
                 }  
-            }
-        })
+        
+        
     }
 
     const deleteTodo = (id)=>{
