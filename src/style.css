@@ -177,7 +177,7 @@ h6{
 }
 .taskHeader{
     width: 80%;
-    text-align:center ;
+    text-align:left ;
 }
 .taskHeader.hidden{
     opacity:1;
@@ -185,7 +185,7 @@ h6{
     margin-left:3%;
     margin-right:3%;
     width: 80%;
-    text-align:center ;
+    text-align:left ;
 }
 
 ul{
@@ -387,7 +387,7 @@ li{
     }
     .taskHeader{
         padding-right:6%;
-        text-align: center;
+        text-align: left;
     }
     .taskHeader.hidden{
         opacity:0;
