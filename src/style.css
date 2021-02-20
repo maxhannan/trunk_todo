@@ -1,13 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css?family=Chivo:300,700|Playfair+Display+SC:700i&display=swap');
 body{
     background-color: #1b1b1b;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Chivo', sans-serif;
+    font-weight: 700;
     height: 100vh;
-    /* color:white; */
-    /* overflow: hidden; */
     margin: 0px;
-    /* font-size: 50px; */
 }
+
 #content{
     display: flex;
     align-items: center;
@@ -15,6 +16,7 @@ body{
     width: 100vw;
     height: 100vh;
 }
+
 .sidebar{
     color:white;
     width: 0px;
@@ -30,9 +32,9 @@ body{
 .sidebar.openBar{
     width: 20%;
     opacity: 1;
-    height: 100vh; 
-    
+    height: 100vh;   
 }
+
 .sidebarContent{
     transition: .3s all;
     width: 100%;
@@ -42,9 +44,9 @@ body{
     align-items: center;
     justify-content: center;
     display: flex;
-    flex-direction: column;
-    
+    flex-direction: column;    
 }
+
 .sideItem{
     width: 90%;
     height: 30px;
@@ -56,42 +58,21 @@ body{
     opacity: .7;
     margin-bottom: 10%;
     cursor: pointer;
+    font-family: 'Chivo', sans-serif;
+    font-weight: 300;
+}
 
-}
-.sideItem:hover{
-    opacity: 1;
-}
-.formBar{
-    color:white;
-    width: 0px;
-    opacity: 0;
-    height: 100vh; 
-    background-color: #1b1b1b;
-    border-left: 1px solid black;
-    transition: .5s ease ;
-    overflow-x: hidden;
-    overflow-y: scroll;
+.sideItem:hover{opacity: 1;}
 
-}
-.formBar.openBar{
-    width: 50%;
-    opacity: 1;
-    height: 100vh; 
-    
-}
-.menuDel{
-    opacity: .3;
-}
-.menuDel:hover{
-    opacity: 1;
-}
+.menuDel{opacity: .3;}
+.menuDel:hover{opacity: 1;}
+
 h6{
     margin-right:6%;
     width: 80%;
 }
 
 .main{
-    
     width: 100%;
     overflow: hidden;
     height: 100vh;
@@ -99,13 +80,11 @@ h6{
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    /* transition: .3s all; */
 }
 
 .main.openSideBar{
     width: 100%;
     height: 100vh;
-
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -122,7 +101,6 @@ h6{
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     border-bottom: 1px solid black;
 }
 
@@ -134,69 +112,63 @@ h6{
     justify-content: center;
     transition: .5s transform;
 }
-.adder:hover{
-    transform: scale(1.1);
 
-}
-.adder.hide{
-    opacity: 0;
-}
+.adder:hover{transform: scale(1.1);}
+.adder.hide{opacity: 0;}
+
 /* Code for Hamburger Button */
 .menuOpen{
     margin-left: 2%;
-
     margin-right:10px ;
     cursor: pointer;
     opacity: 1;
     width: 30px;
 }
-.menuOpen.hidden{
-    display: none;
-}
+
+.menuOpen.hidden{display: none;}
+
 .bar1, .bar2, .bar3 {
     width: 30px;
     height: 3px;
     background-color: white;
     transition: .5s transform ease;
     margin: 6px 0;
-  }
-  .container:hover{
+}
+.container:hover{
     opacity: .8;
-  }
-  .change .bar1 {
+}
+.change .bar1 {
     -webkit-transform: rotate(-45deg) translate(-9px, 6px);
     transform: rotate(-45deg) translate(-6px, 6px);
-  }
+}
   
-  .change .bar2 {opacity: 0;}
+.change .bar2 {opacity: 0;}
   
-  .change .bar3 {
+.change .bar3 {
     -webkit-transform: rotate(45deg) translate(-8px, -8px);
     transform: rotate(45deg) translate(-6px, -7px);
-  }
+}
+
 .taskContainer{
     margin-bottom: 5%;
- 
     width: 100%;
     min-width: 400px;
     height: 100%;
     opacity: 1;
-    /* background-color: lightskyblue; */
     display: flex;
     flex-direction: column;
     align-items: center;
     overflow: scroll;
-    /* transition: .3s all; */
     justify-content: flex-start;
     align-items: center;
     margin-bottom: 10px;
 }
+
 .taskContainer.hidden{
     opacity:1;
     width: 100%;
     min-width: 400px;
     height: 100%;
-    /* background-color: lightskyblue; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -204,21 +176,16 @@ h6{
     justify-content: flex-start;
 }
 .taskHeader{
-
     width: 80%;
     text-align:center ;
-    /* transition: .5s all; */
-
 }
 .taskHeader.hidden{
     opacity:1;
     margin-bottom: 0px;
     margin-left:3%;
     margin-right:3%;
-    /* padding: 0px; */
     width: 80%;
     text-align:center ;
-
 }
 
 ul{
@@ -243,7 +210,6 @@ li{
     height: 90px;
     justify-content: center;
     overflow: hidden;
-    
 }
 
 .open{
@@ -255,7 +221,6 @@ li{
     display:flex;
     height: 50px;
     width: 100%;
-    /* transition: .3s all ; */
     align-items: center;
 }
 .optContainer{
@@ -263,7 +228,6 @@ li{
     height:30px;
     align-items: center;
     justify-content:flex-end;
-    
     font-size: 2vh;
 }
 
@@ -272,7 +236,6 @@ li{
     margin-top: 10px;
     width: 100%;
     display: flex;
-    /* background-color: green; */
 }
 .descripText{
     width: 100%;
@@ -282,9 +245,11 @@ li{
     background-color: transparent;
     border: none;
 }
+
 .descripText:focus{
     outline:none;
 }
+
 .checker{
     width: 15px;
     height: 15px;
@@ -295,13 +260,16 @@ li{
     cursor: pointer;
     
 }
+
 .checker:hover{
     background-color: white;
 }
+
 .checker.checked{
     background-color: lightgreen;
     border: 1px solid lightgreen;
 }
+
 .task{
     flex-grow: 2;
     width: 70%;
@@ -309,23 +277,23 @@ li{
     height: 100%;
     display: flex;
 }
+
 .taskText.completed{
     text-decoration: line-through;
     opacity: .5;
     color: gray;
 }
+
 .taskText{
     width:100%;
     font-size: 4vh;
     padding-left: 5%;
     background-color: transparent;
     border: none;
-    font-family:'Poppins' sans-serif ;
+    font-family:'Chivo' sans-serif ;
+    font-weight: 300;
     color: white;
-
-    transition: .5s color;
- 
-    
+    transition: .5s color;  
 }
 .dueDate{
     width: 20%;
@@ -343,10 +311,9 @@ li{
     background-color: transparent;
     border: none;
     padding: 0px;
-
-    font-family:'Poppins' sans-serif ;
+    font-family:'Chivo' sans-serif ;
     transition: .5s color;
-    color: darkred;
+    color: red;
 }
 .opt{
     width: 8%;
@@ -362,13 +329,14 @@ li{
     opacity: 1;
 }
 .yellow{color:gold;}
-.delBtn{color: lightcoral;
-font-size: 3vh;}
+.delBtn{
+    color: lightcoral;
+    font-size: 3vh;
+}
 .flag{color: yellow;}
 .grabLines{cursor: grab;}
 
 .openArrow{
-
     font-size: 3vh;
 }
 .openArrow.openBtnOpen{

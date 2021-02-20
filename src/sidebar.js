@@ -6,7 +6,7 @@ const sideBar = (()=>{
     let container;
     let delBtns;
     let filters;
-
+    let sections = JSON.parse(localStorage.getItem('sectARR')) || [];
     const bindEvents = ()=>{
         container = document.querySelector('.sidebarContent');
         addBtn = container.querySelector('.sideBarAdder');
@@ -52,30 +52,31 @@ const sideBar = (()=>{
         const main = document.querySelector('.main')
         
         content.insertBefore(sideBar,main)
-        const adder = document.querySelector
         bindEvents();
+        sections.forEach(section => sectionBuilder(section))
     }
     
     
-    // add items to sidebar
-    const AddSection = (section = '') =>{
+    // add items to sidebar with button
+    const AddSection = () =>{
         let sectionName;
-        if(section = ''){
-            sectionName = prompt('Section Name')
-        }else{
-            sectionName = section; 
-        }
-       
+        sectionName = prompt('Section Name');
        let validName = sectionName.length > 0 ? true: false;
        while(!validName){
         sectionName = prompt('Try Again')
         validName = sectionName.length > 1 ? true: false;
        }
-       console.log(sectionName)
+       sections.push(sectionName)
+       console.log(sections)
+       localStorage.setItem('sectARR', JSON.stringify(sections)); 
+       sectionBuilder(sectionName)
+    }
 
+    const sectionBuilder =(sectionName)=>{
         const newSection = document.createElement('div');
         newSection.classList.add('sideItem')
         newSection.classList.add('filter')
+        
         newSection.id = sectionName.toLowerCase().replace(/ +/g, "");;
         newSection.innerHTML = `
             <div class = 'delBtnMenu'>
@@ -88,11 +89,17 @@ const sideBar = (()=>{
         container.insertBefore(newSection,addBtn);
         bindEvents();
     }
+
     const delSection = (e) =>{
-       const garbage = e.target.closest('div').parentNode
-       const garbageID = garbage.id;
-       todoList.deleteSection(garbageID);
-       garbage.remove();
+        const garbage = e.target.closest('div').parentNode
+        const header = (garbage.querySelector('h6').innerHTML)
+
+        sections.splice(sections.indexOf(header),1)
+        localStorage.setItem('sectARR', JSON.stringify(sections)); 
+        console.log(header)
+        const garbageID = garbage.id;
+        todoList.deleteSection(garbageID);
+        garbage.remove();
       
     }
 

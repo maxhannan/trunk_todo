@@ -1,31 +1,20 @@
 
 import {isWithinInterval} from 'date-fns';
-
+import {random} from 'lodash'
 const todoList = (()=>{
-    // let base_id = 0;
-    let jarr = JSON.parse(localStorage.getItem('tdarr'))
-    let todosArray = jarr ||  [];
-    
+    // MAIN ARRAY OF TODOS
+    let todosArray = JSON.parse(localStorage.getItem('tdarr')) ||  [];
 
-    console.log(todosArray)
-    function getRandomInt(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min) + min); 
-    }
+    // RETURNS COPY OF ARRAY SORTED BY DATE
     const getArray = () => {
-        //sorts array by date and returns copy
-        console.log([...todosArray].sort((a,b) => new Date(b.duedate) - new Date(a.duedate)))
         return ([...todosArray].sort((a,b) => new Date(b.duedate) - new Date(a.duedate)))
     }
     
     const todoFactory = (task,date,description,priority = 1,sectionId = 0)=>{
         // gives unique id to each object, regardless of index in list
         let duedate = new Date(date);
-        const id = getRandomInt(0,100000000000000)
-        
-
-
+        const id = random(0,100000000000000)
+        // INITIAL TASK COMPLETION
         let completed = false;
 
         const newTodo = {
@@ -37,7 +26,7 @@ const todoList = (()=>{
             sectionId,
             id,
         }
-
+        // ADD TODO TO ARRAY
         todosArray.push(newTodo)
         return newTodo
     }
@@ -47,28 +36,27 @@ const todoList = (()=>{
         switch(section){
             case 'inbox':
                 return  getArray()
-                .filter(todo => !todo.completed)
+                    .filter(todo => !todo.completed)
                 break;
             case 'today':
                 return getArray()
-                .filter(todo => !todo.completed)
-                .filter(todo => isToday(new Date(todo.duedate)));
+                    .filter(todo => !todo.completed)
+                    .filter(todo => isToday(new Date(todo.duedate)));
                 break;
             case 'upcoming':
                 return inThisWeek()
-                .filter(todo => !todo.completed);
+                    .filter(todo => !todo.completed);
                 break;
             case 'completed':
                 return getArray()
                 .filter(todo => todo.completed);
                 break;
             default:
-                return getArray().
-                filter(todo => !todo.completed)
-                .filter(todo => todo.sectionId === section);
+                return getArray()
+                    .filter(todo => !todo.completed)
+                    .filter(todo => todo.sectionId === section);
                 break;
-        }
-       
+        } 
     }
     const getArrayIndex = (id)=>{
         // returns index of todo with that id 
@@ -76,21 +64,20 @@ const todoList = (()=>{
         let arr  = getArray();
         for(let ix = 0; ix < arr.length; ix++){
             if(arr[ix].id === Number(id)){
-                let todo = arr[ix]
                 result = todosArray.indexOf(arr[ix])
-                console.log({result})
                 break;
             }
         }
-
          return result   
     }
+    // Checks if date is today
     const isToday = (someDate) => {
         const today = new Date()
         return someDate.getDate() == today.getDate() &&
           someDate.getMonth() == today.getMonth() &&
           someDate.getFullYear() == today.getFullYear()
     }
+    // Checks if date is in the next week using date-FNS isWithinInterval
     const inThisWeek = (todo)=>{
         let today = new Date();
         let next = nextweek()
@@ -100,47 +87,44 @@ const todoList = (()=>{
             .filter(todo => isWithinInterval( new Date(todo.duedate),{ start: today, end: next }));
         return [ ...weekList,...todayList];
     }
+    // Gets the date a week from today
     const nextweek = ()=>{
         var today = new Date();
         var nextweek = new Date(today.getFullYear(), today.getMonth(), today.getDate()+7);
         return nextweek;
     }
+    // UPDATES TODOS AND RESETS LOCAL STORAGE
     const updateTodo = (ix,prop, newVal = '') =>{
-                switch(prop){
-                    case 'task':
-                        todosArray[ix].task = newVal;
-                        break;
-                    case 'duedate':
-                        todosArray[ix].duedate = newVal;
-                        break;
-                    case 'completed':
-                        todosArray[ix].completed = !todosArray[ix].completed;
-                        break;
-                    case 'descrip':
-                        todosArray[ix].description = newVal;
-                        break;
-                    case 'priority':
-                        todosArray[ix].priority = newVal;
-                        break;
-                } 
-                localStorage.setItem('tdarr', JSON.stringify(todosArray));
-               
-                
+        switch(prop){
+            case 'task':
+                todosArray[ix].task = newVal;
+                break;
+            case 'duedate':
+                todosArray[ix].duedate = newVal;
+                break;
+            case 'completed':
+                todosArray[ix].completed = !todosArray[ix].completed;
+                break;
+            case 'descrip':
+                todosArray[ix].description = newVal;
+                break;
+            case 'priority':
+                todosArray[ix].priority = newVal;
+                break;
+        } 
+        localStorage.setItem('tdarr', JSON.stringify(todosArray));          
     }
 
-    const deleteTodo = (ix)=>{
-        todosArray.splice(ix,1);
-        localStorage.setItem('tdarr', JSON.stringify(todosArray)); 
-         
+    const deleteTodo = (index)=>{
+        todosArray.splice(index,1);
+        localStorage.setItem('tdarr', JSON.stringify(todosArray));   
     }
+
     const deleteSection = (section)=>{
-        let garbTodos = getArraySection(section);
-        garbTodos.forEach(todo => {
-            console.log(todo)
-            deleteTodo(todo.id)
-        });
-        
-               
+        let garbageTodos = getArraySection(section);
+        garbageTodos.forEach(todo => {
+            deleteTodo(getArrayIndex(todo.id))
+        });       
     }
     
     return{
