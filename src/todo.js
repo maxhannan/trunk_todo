@@ -88,7 +88,7 @@ const todoController = (()=>{
     const handleFlags =(e)=>{
         const li_id = e.target.closest('li').id
         const ix = todoList.getArrayIndex(li_id)
-        const colors = ['white', 'green', 'yellow', 'red'];
+        const colors = ['white', 'green', 'yellow', '#FC5130'];
         let target = e.target.closest('div')
         let priority = target.id 
         let newPriority = Number(priority) + 1

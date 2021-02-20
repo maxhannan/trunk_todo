@@ -1,5 +1,6 @@
 import {todoListMaster} from './todoList'
 import {formControl} from './formControl'
+
 const viewController = (()=>{
   // keeps track of current page
   let currentPage = 'inbox';

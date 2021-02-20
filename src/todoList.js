@@ -1,9 +1,8 @@
 import {headerBuilder} from './header'
 import {todoList} from './todoModel'
 import {todoController} from './todo'
-import { Datepicker } from 'vanillajs-datepicker';
 import { Sortable, Plugins } from '@shopify/draggable';
-import { viewController } from './viewController';
+
 const todoListMaster = (()=>{
     const todoListBuilder = (pageName,section)=>{
         // alert('building')
@@ -45,7 +44,7 @@ const todoListMaster = (()=>{
           plugins: [Plugins.SwapAnimation]
         });
         // Border while drag
-        sortable.on('drag:start',(e) => e.data.source.style.border = '3px solid lightskyblue');
+        sortable.on('drag:start',(e) => e.data.source.style.border = '3px solid #FC5130');
     }
       
     return{

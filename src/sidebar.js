@@ -1,5 +1,7 @@
 import {viewController} from './viewController'
 import {todoList} from './todoModel'
+
+
 const sideBar = (()=>{
     const content = document.querySelector('#content')
     let addBtn;
@@ -29,19 +31,19 @@ const sideBar = (()=>{
         const sidebarContent = document.createElement('div');
         sidebarContent.classList.add('sidebarContent')
         sidebarContent.innerHTML = `
-            <div class="sideItem filter" id = 'inbox'>
+            <div class="sideItem filter" id = 'inbox'  style = 'color: #30BCED;'>
                 <h6>Inbox</h6>
                 <i class="fas fa-inbox sideIcon"></i>
             </div>
-            <div class="sideItem filter" id = 'today'> 
+            <div class="sideItem filter" id = 'today' style = 'color: yellow;'> 
                 <h6>Today</h6>
                 <i class="far fa-star sideIcon"></i>
             </div>
-            <div class="sideItem filter" id = 'upcoming'>
+            <div class="sideItem filter" id = 'upcoming' style = 'color: #FC5130;'>
                 <h6>Upcoming</h6>
                 <i class="fas fa-retweet sideIcon"></i>
             </div>
-            <div class="sideItem filter" id = 'completed'>
+            <div class="sideItem filter" id = 'completed' style = 'color: lightgreen;'>
                 <h6>Completed</h6>
                 <i class="far fa-check-circle"></i>
             </div>
