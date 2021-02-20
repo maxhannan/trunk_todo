@@ -1,6 +1,6 @@
 import {todoList} from './todoModel'
 
-todoList.todoFactory('This is a test','Fri Feb 19 2021 00:00:00 GMT-0600 (CST)','This is a description.',1,'tester');
+todoList.todoFactory('This is a test','Fri Feb 19 2021 00:00:00 GMT-0600 (CST)','This is a description.',0,'tester');
 todoList.todoFactory('Shop for Xmas Gifts','Thu Dec 23 2021 00:00:00 GMT-0600 (CST)','This is a description.',2,'tester');
 
 todoList.todoFactory('This is a test','Sat Feb 20 2021 00:00:00 GMT-0600 (CST)','This is a description.',1,'tester');

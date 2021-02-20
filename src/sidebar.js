@@ -1,5 +1,5 @@
 import {viewController} from './viewController'
-
+import {todoList} from './todoModel'
 const sideBar = (()=>{
     const content = document.querySelector('#content')
     let addBtn;
@@ -52,14 +52,20 @@ const sideBar = (()=>{
         const main = document.querySelector('.main')
         
         content.insertBefore(sideBar,main)
+        const adder = document.querySelector
         bindEvents();
     }
     
     
     // add items to sidebar
-    const AddSection = () =>{
+    const AddSection = (section = '') =>{
+        if(section = ''){
+            let sectionName = prompt('Section Name')
+        }else{
+            sectionName = section; 
+        }
        let sectionName = prompt('Section Name')
-       let validName = sectionName.length > 1 ? true: false;
+       let validName = sectionName.length > 0 ? true: false;
        while(!validName){
         sectionName = prompt('Try Again')
         validName = sectionName.length > 1 ? true: false;
@@ -84,10 +90,11 @@ const sideBar = (()=>{
     const delSection = (e) =>{
        const garbage = e.target.closest('div').parentNode
        const garbageID = garbage.id;
+       todoList.deleteSection(garbageID);
        garbage.remove();
-       // delete items with this id from list
-     }
-    //sidebar animations
+      
+    }
+
     
     return{
         sideBarBuilder,

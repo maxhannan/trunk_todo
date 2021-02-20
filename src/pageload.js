@@ -1,7 +1,14 @@
+
+import {viewController} from './viewController'
+import {todoListMaster} from './todoList'
+import{sideBar} from './sidebar'
+
+
 const pageLoad = () =>{
-    // build header
-    // build sidebar
-    // create home todolist
-    // bind events
-    
+    sideBar.sideBarBuilder();
+    todoListMaster.todoListBuilder('inbox');
+    viewController.cacheHtml();
+}
+export{
+    pageLoad
 }

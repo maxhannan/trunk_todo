@@ -134,10 +134,9 @@ h6{
     justify-content: center;
     transition: .5s transform;
 }
-.adder.add{
-    transform: rotate(135deg);
-    justify-content: flex-start;
-    margin-right: 4%;
+.adder:hover{
+    transform: scale(1.1);
+
 }
 .adder.hide{
     opacity: 0;
@@ -363,13 +362,14 @@ li{
     opacity: 1;
 }
 .yellow{color:gold;}
-.delBtn{color: lightcoral;}
+.delBtn{color: lightcoral;
+font-size: 3vh;}
 .flag{color: yellow;}
 .grabLines{cursor: grab;}
 
 .openArrow{
-    padding-bottom: 1%;
-    font-size: 4vh;
+
+    font-size: 3vh;
 }
 .openArrow.openBtnOpen{
     transform:rotate(180deg)

@@ -1,15 +1,15 @@
 import { format } from 'date-fns'
 import {todoListMaster} from './todoList'
-import {headerBuilder} from './header'
 import {todoList} from './todoModel'
-
 import { Datepicker } from 'vanillajs-datepicker';
-import { Sortable, Plugins } from '@shopify/draggable';
 import { viewController } from './viewController';
+
 const todoController = (()=>{
     const todoDivFactory = (todo,ul,edit = false)=>{
         let color;
-        if(todo.priority === 1){
+        if(todo.priority === 0){
+            color = 'white';
+        }else if(todo.priority === 1){
          color = 'green';
         }else if(todo.priority === 2){
             color = 'yellow';
@@ -17,10 +17,10 @@ const todoController = (()=>{
             color = 'red';
         }
         let vals = todo.duedate
-        
+        console.log({todo})
         let result = format(new Date(vals), 'MM/dd/yyyy');
         const todoDiv = document.createElement('li')
-        todoDiv.id = todo.getId();
+        todoDiv.id = todo.getId;
         if(edit){
             todoDiv.classList.add('open')
         }
@@ -28,29 +28,33 @@ const todoController = (()=>{
                 <div class="taskHolder">
                     <div class="checker ${todo.completed ? 'checked': ''}"></div>
                     <div class="task">
-                        <input type="text"  id = 'task' class="taskText ${edit ? 'yellow' : ''} ${todo.completed ? 'completed': ''}" value = '${todo.task}' ${edit ? '' : 'disabled'}>
+                        <input type="text"  id = 'task' class="taskText ${edit ? 'yellow' : ''} 
+                        ${todo.completed ? 'completed': ''}" 
+                        value = '${todo.task}' ${edit ? '' : 'disabled'}>
                     </div>
-                    <div class="edit opt">
-                    <i class="fas fa-edit"></i>
+                    <div class="edit opt ${edit ? 'yellow' : ''}">
+                    <i class="far fa-edit"></i>
                 </div>
                      <div class="delBtn opt">
-                        <i class="fas fa-trash-alt"></i>
+                        <i class="far fa-times-circle"></i>
+     
                     </div>
                 </div>
                 <div class="optContainer">
-                <div class ='dueDate'>
-                <input type="text" class='date ${edit ? 'yellow' : ''}' id="date" value="${result}" ${edit ? '' : 'disabled'}>
-            </div>
-            <div class="flag opt">
-            <i style = 'color:${color};'class="fas fa-flag"></i>
-        </div>
-        <div class="openArrow opt">
-            <i class="fas fa-sort-down ${edit ? 'openBtnOpen' : ''}"></i>
-        </div>
-                    
+                    <div class ='dueDate'>
+                        <input type="text" class='date ${edit ? 'yellow' : ''}' id="date" value="${result}" ${edit ? '' : 'disabled'}>
+                    </div>
+                    <div id = '${todo.priority}' class="flag opt">
+                        
+                        <i style = 'color:${color};' id = 'flag' class="far fa-flag"></i>
+                    </div>
+                    <div  class="openArrow opt">
+                        <i class="fas fa-chevron-down ${edit ? 'openBtnOpen' : ''}"></i>
+
+                    </div>
                 </div>
                 <div class = 'contentHolder'>
-                    <textarea class="descripText" cols="40" rows="5">${todo.description}</textarea>
+                    <textarea id = 'descrip' class="descripText" cols="40" rows="5">${todo.description}</textarea>
                 </div>
         `
         ul.prepend(todoDiv)
@@ -64,6 +68,10 @@ const todoController = (()=>{
         let checker = div.querySelector('.checker')
         let editBtn = div.querySelector('.edit')
         let bin = div.querySelector('.delBtn');
+        let descrip = div.querySelector('.descripText')
+        let flag = document.querySelector('.flag')
+
+        flag.addEventListener('mousedown', handleFlags)
         bin.addEventListener('click', handleDel)
         checker.addEventListener('mousedown', handleCheck)
         
@@ -74,24 +82,48 @@ const todoController = (()=>{
             autohide: true,
         }); 
 
-        dateInp.addEventListener('changeDate',handleDateChange)
-
-        textInp.addEventListener('input', handleDateChange)
+        dateInp.addEventListener('changeDate',handleUpdate)
+        descrip.addEventListener('input', handleUpdate)
+        textInp.addEventListener('input', handleUpdate)
     }
+    const handleFlags =(e)=>{
+        const li_id = e.target.closest('li').id
+        const colors = ['white', 'green', 'yellow', 'red'];
+        let target = e.target.closest('div')
+        let priority = target.id 
+        let newPriority = Number(priority) + 1
+        
+        console.log({priority,newPriority})
+        if(newPriority > 3){
+           newPriority = 0;
+        }
+        todoList.updateTodo(li_id, 'priority', newPriority);
+        target.id = newPriority
+        target.querySelector('#flag').style.color = colors[newPriority]
+    }
+
     const handleDel = function(e){
         let garbageDiv = e.target.closest('li')
+        const li_id = garbageDiv.id
+        todoList.deleteTodo(li_id);
         garbageDiv.remove();
     }
-    const handleCheck = function(e){
+
+    const handleCheck = async function(e){
+        const id = e.target.closest('li').id
         let hol = e.target.closest('.taskHolder');
         let task = hol.querySelector('.taskText');
         // toggle checked class
         e.target.classList.toggle('checked');
         // Strike-through text
         task.classList.toggle('completed');
+        todoList.updateTodo(id, 'completed')
+        await viewController.sleep(2000)
+        todoListMaster.todoListBuilder(viewController.getcurrent());
+
     }
 
-    const handleDateChange  = (e)=>{
+    const handleUpdate  = (e)=>{
       const id = e.target.closest('li').id
       let type = e.target.id
       let newVal;
@@ -105,7 +137,12 @@ const todoController = (()=>{
         case 'task':
             prop = 'task'
             newVal = e.target.value     
-            break     
+            break  
+        case 'descrip':
+            prop = 'descrip'
+            newVal = e.target.value     
+            break  
+
       }
       todoList.updateTodo(id, prop, newVal)
 

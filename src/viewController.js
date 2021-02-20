@@ -70,7 +70,8 @@ const viewController = (()=>{
     handleAdd,
     handleMenuOpen,
     handlePageChange,
-    getcurrent
+    getcurrent,
+    sleep
   } 
 })();
 

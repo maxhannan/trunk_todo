@@ -3,7 +3,9 @@ import {isWithinInterval} from 'date-fns';
 
 const todoList = (()=>{
     let base_id = 0;
+   
     const todosArray =  [];
+
     const getArray = () => {
         //sorts array by date and returns copy
         return [...todosArray].sort((a, b) => b.duedate-a.duedate);
@@ -13,9 +15,11 @@ const todoList = (()=>{
         // gives unique id to each object, regardless of index in list
         let duedate = new Date(date);
         const id = base_id;
-        base_id ++
+        base_id ++;
+
         const getId = () => id;
         let completed = false;
+
         const newTodo = {
             task,
             duedate,
@@ -24,8 +28,8 @@ const todoList = (()=>{
             completed,
             sectionId,
             getId,
-            id
         }
+        
         todosArray.push(newTodo)
         return newTodo
     }
@@ -34,19 +38,27 @@ const todoList = (()=>{
         // returns a filtered array of todos
         switch(section){
             case 'inbox':
-                return getArray();
+                
+                return  getArray()
+                .filter(todo => !todo.completed);
                 break;
             case 'today':
-                return getArray().filter(todo => isToday(new Date(todo.duedate)));
+                return getArray()
+                .filter(todo => !todo.completed)
+                .filter(todo => isToday(new Date(todo.duedate)));
                 break;
             case 'upcoming':
-                return inThisWeek();
+                return inThisWeek()
+                .filter(todo => !todo.completed);
                 break;
             case 'completed':
-                return getArray().filter(todo => todo.completed);
+                return getArray()
+                .filter(todo => todo.completed);
                 break;
             default:
-                return getArray().filter(todo => todo.sectionId === section);
+                return getArray().
+                filter(todo => !todo.completed)
+                .filter(todo => todo.sectionId === section);
                 break;
         }
        
@@ -77,45 +89,46 @@ const todoList = (()=>{
             .filter(todo => isToday(new Date(todo.duedate)));
         let weekList = getArray()
             .filter(todo => isWithinInterval( new Date(todo.duedate),{ start: today, end: next }));
-        return [...todayList, ...weekList];
+        return [ ...weekList,...todayList];
     }
     const nextweek = ()=>{
         var today = new Date();
         var nextweek = new Date(today.getFullYear(), today.getMonth(), today.getDate()+7);
         return nextweek;
     }
-    const updateTodo = (ix,prop, newVal) =>{
+    const updateTodo = (ix,prop, newVal = '') =>{
                 console.log({ix})
-          
                 switch(prop){
                     case 'task':
                         todosArray[ix].task = newVal;
                         break;
                     case 'duedate':
                         todosArray[ix].duedate = newVal;
-                        console.log(todosArray[ix] )
-                        console.log(todosArray[ix].duedate)
                         break;
-                    // case 'priority':
-                    //     todo.priority = newVal;
-                    //     break;
-                    // case 'description':
-                    //     todo.description = newVal;
-                    //     break;
-                    // case 'completed':
-                    //     todo.completed = newVal;
-                    //     break;
-                }  
-        
-        
+                    case 'completed':
+                        todosArray[ix].completed = !todosArray[ix].completed;
+                        break;
+                    case 'descrip':
+                        todosArray[ix].description = newVal;
+                        break;
+                    case 'priority':
+                        todosArray[ix].priority = newVal;
+                        break;
+                } 
+               
+                
     }
 
-    const deleteTodo = (id)=>{
-        todosArray.forEach(todo =>{
-            if(todo.id === id){
-                todosArray.splice(todosArray.indexOf(todo),1);
-            }
-        })
+    const deleteTodo = (ix)=>{
+        todosArray.splice(ix,1); 
+         
+    }
+    const deleteSection = (section)=>{
+        let garbTodos = getArraySection(section);
+        garbTodos.forEach(todo => {
+            console.log(todo)
+            deleteTodo(todo.id)
+        });
     }
     
     return{
@@ -124,7 +137,8 @@ const todoList = (()=>{
         updateTodo,
         deleteTodo,
         getArraySection,
-        getArrayIndex
+        getArrayIndex,
+        deleteSection
     }
 })();
 
