@@ -5,7 +5,7 @@ import { Datepicker } from 'vanillajs-datepicker';
 import { Sortable, Plugins } from '@shopify/draggable';
 import { viewController } from './viewController';
 const todoListMaster = (()=>{
-    const todoListBuilder = (section)=>{
+    const todoListBuilder = (pageName,section)=>{
         // alert('building')
         // clear html
         const main = document.querySelector('.main');
@@ -18,7 +18,7 @@ const todoListMaster = (()=>{
         newList.appendChild(ul)
         main.appendChild(newList);
         // build new header with correct name
-        headerBuilder(section);
+        headerBuilder(pageName);
         // get todo section
         let todos = todoList.getArraySection(section)
     

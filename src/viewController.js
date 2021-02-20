@@ -54,9 +54,11 @@ const viewController = (()=>{
   }
   
   const handlePageChange = (e) =>{
-    currentPage = e.target.closest('div').id
+    currentPage = e.target.closest('div')
+    let pageId = currentPage.id
+    let pageName = currentPage.querySelector('h6').innerHTML
   
-    todoListMaster.todoListBuilder(e.target.closest('div').id);
+    todoListMaster.todoListBuilder(pageName,pageId);
     cacheHtml();
     menuOpen.classList.add("change")
     taskContainer.classList.add('hidden')

@@ -12,6 +12,8 @@ const sideBar = (()=>{
         addBtn = container.querySelector('.sideBarAdder');
         delBtns = container.querySelectorAll('.delBtnMenu')
         filters = container.querySelectorAll('.filter')
+
+        filters.forEach(filter => filter.removeEventListener('click', viewController.handlePageChange))
         addBtn.removeEventListener('click', AddSection);
         delBtns.forEach(btn => btn.removeEventListener('click', delSection))
 
@@ -23,7 +25,6 @@ const sideBar = (()=>{
     const sideBarBuilder = function(){
         const sideBar = document.createElement('div');
         sideBar.classList.add('sidebar')
-        // sideBar.classList.add('openBar')
 
         const sidebarContent = document.createElement('div');
         sidebarContent.classList.add('sidebarContent')
@@ -67,7 +68,6 @@ const sideBar = (()=>{
         validName = sectionName.length > 1 ? true: false;
        }
        sections.push(sectionName)
-       console.log(sections)
        localStorage.setItem('sectARR', JSON.stringify(sections)); 
        sectionBuilder(sectionName)
     }
@@ -93,14 +93,11 @@ const sideBar = (()=>{
     const delSection = (e) =>{
         const garbage = e.target.closest('div').parentNode
         const header = (garbage.querySelector('h6').innerHTML)
-
         sections.splice(sections.indexOf(header),1)
         localStorage.setItem('sectARR', JSON.stringify(sections)); 
-        console.log(header)
         const garbageID = garbage.id;
         todoList.deleteSection(garbageID);
         garbage.remove();
-      
     }
 
     

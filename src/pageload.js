@@ -6,7 +6,7 @@ import{sideBar} from './sidebar'
 
 const pageLoad = () =>{
     sideBar.sideBarBuilder();
-    todoListMaster.todoListBuilder('inbox');
+    todoListMaster.todoListBuilder('Inbox','inbox');
     viewController.cacheHtml();
 }
 export{

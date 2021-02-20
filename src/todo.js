@@ -17,7 +17,6 @@ const todoController = (()=>{
             color = 'red';
         }
         let vals = todo.duedate
-        console.log({todo})
         let result = format(new Date(vals), 'MM/dd/yyyy');
         const todoDiv = document.createElement('li')
         todoDiv.id = todo.id;
@@ -93,8 +92,6 @@ const todoController = (()=>{
         let target = e.target.closest('div')
         let priority = target.id 
         let newPriority = Number(priority) + 1
-        
-        console.log({priority,newPriority})
         if(newPriority > 3){
            newPriority = 0;
         }
@@ -122,7 +119,10 @@ const todoController = (()=>{
         task.classList.toggle('completed');
         todoList.updateTodo(ix, 'completed')
         await viewController.sleep(2000)
-        todoListMaster.todoListBuilder(viewController.getcurrent());
+        let current = viewController.getcurrent()
+        let currentTitle = current.querySelector('h6').innerHTML
+        let currentId = current.id
+        todoListMaster.todoListBuilder(currentTitle, currentId);
 
     }
 
@@ -192,8 +192,10 @@ const todoController = (()=>{
         date.classList.toggle('yellow')
         e.target.closest('.edit').classList.toggle('yellow');
         if(finished){
-            console.log({finished})
-            todoListMaster.todoListBuilder(viewController.getcurrent());
+            let current = viewController.getcurrent()
+            let currentTitle = current.querySelector('h6').innerHTML
+            let currentId = current.id
+            todoListMaster.todoListBuilder(currentTitle, currentId);
         }
     }
     return{
