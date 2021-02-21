@@ -1,83 +1,69 @@
-import {todoListMaster} from './todoList'
-import {formControl} from './formControl'
+import { todoListMaster } from './todoList'
+import { formControl } from './formControl'
 
-const viewController = (()=>{
+const viewController = (() => {
   // keeps track of current page
-  let currentPage = 'inbox';
+  let currentPage
   // cacheHTML
   const getcurrent = () => currentPage
-  let taskHeader,taskContainer, sideBar, menuOpen, adder, main, formBar;
-  const cacheHtml = () =>{
-     taskHeader = document.querySelector('.taskHeader')
-     taskContainer = document.querySelector('.taskContainer')
-     sideBar = document.querySelector('.sidebar')
-     main = document.querySelector('.main')
-     menuOpen = document.querySelector('.menuOpen')
-     adder = document.querySelector('.adder')
-     formBar = document.querySelector('.formBar')
+  let taskHeader, taskContainer, sideBar, menuOpen, adder, main
+  const cacheHtml = () => {
+    taskHeader = document.querySelector('.taskHeader')
+    taskContainer = document.querySelector('.taskContainer')
+    sideBar = document.querySelector('.sidebar')
+    main = document.querySelector('.main')
+    menuOpen = document.querySelector('.menuOpen')
+    adder = document.querySelector('.adder')
   }
-
   // sleep function
-  const sleep = (ms)=>{
-    return new Promise(resolve => setTimeout(resolve, ms));
+  const sleep = (ms) => {
+    return new Promise(resolve => setTimeout(resolve, ms))
   }
 
-  const handleMenuOpen = ()=>{
+  const handleMenuOpen = () => {
     // Hide Adder
     adder.classList.remove('add')
     adder.classList.toggle('hide')
     // formBar.classList.remove('openBar')
-   
-    //Open Menu
-    menuOpen.classList.toggle("change")
-    sideBar.classList.toggle('openBar');
+    // Open Menu
+    menuOpen.classList.toggle('change')
+    sideBar.classList.toggle('openBar')
     main.classList.toggle('openSideBar')
     taskContainer.classList.toggle('hidden')
     taskHeader.classList.toggle('hidden')
   }
 
-  const handleAdd = ()=>{
-    // alert(currentPage)
-    // Animate adder
-    // adder.classList.toggle('add');
-    // Make sure menu is closed
-    menuOpen.classList.remove("change")
-    // menuOpen.classList.toggle("hidden")
-    
+  const handleAdd = () => {
+    menuOpen.classList.remove('change')
     sideBar.classList.remove('openBar')
-    formControl();
-
-    // formBar.classList.toggle('openBar')
-    // main.classList.toggle('openSideBar')
-    // taskContainer.classList.toggle('hidden')
-    // taskHeader.classList.toggle('hidden')
-
+    formControl()
   }
-  
-  const handlePageChange = (e) =>{
+
+  const handlePageChange = (e) => {
     currentPage = e.target.closest('div')
-    let pageId = currentPage.id
-    let pageName = currentPage.querySelector('h6').innerHTML
-  
-    todoListMaster.todoListBuilder(pageName,pageId);
-    cacheHtml();
-    menuOpen.classList.add("change")
+    console.log(currentPage)
+    const pageId = currentPage.id
+    const pageName = currentPage.querySelector('h6').innerHTML
+
+    todoListMaster.todoListBuilder(pageName, pageId)
+    cacheHtml()
+    menuOpen.classList.add('change')
     taskContainer.classList.add('hidden')
     taskHeader.classList.add('hidden')
     adder.classList.toggle('hide')
-    handleMenuOpen();
+    handleMenuOpen()
   }
- 
-  return{
+
+  return {
     cacheHtml,
     handleAdd,
     handleMenuOpen,
     handlePageChange,
     getcurrent,
     sleep
-  } 
-})();
+  }
+})()
 
-export{
+export {
   viewController
 }

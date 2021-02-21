@@ -1,14 +1,14 @@
 
-import {viewController} from './viewController'
-import {todoListMaster} from './todoList'
-import{sideBar} from './sidebar'
+import { viewController } from './viewController'
+import { todoListMaster } from './todoList'
+import { sideBar } from './sidebar'
 
-
-const pageLoad = () =>{
-    sideBar.sideBarBuilder();
-    todoListMaster.todoListBuilder('Inbox','inbox');
-    viewController.cacheHtml();
+const pageLoad = () => {
+  sideBar.sideBarBuilder()
+  todoListMaster.todoListBuilder('Inbox', 'inbox')
+  viewController.cacheHtml()
+  // viewController.initSel()
 }
-export{
-    pageLoad
+export {
+  pageLoad
 }
