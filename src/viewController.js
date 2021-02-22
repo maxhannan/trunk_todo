@@ -4,8 +4,15 @@ import { formControl } from './formControl'
 const viewController = (() => {
   // keeps track of current page
   let currentPage
+  // returns state of current page
+  const getcurrent = () => {
+    // returns homepage if not defined, for use on inital load, gets reassigned in handlePageChange
+    if (typeof currentPage === 'undefined') {
+      return document.querySelector('#inbox')
+    }
+    return currentPage
+  }
   // cacheHTML
-  const getcurrent = () => currentPage
   let taskHeader, taskContainer, sideBar, menuOpen, adder, main
   const cacheHtml = () => {
     taskHeader = document.querySelector('.taskHeader')
